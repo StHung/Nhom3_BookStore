@@ -1,0 +1,366 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Tổng quan hàng tuần</h3>
+                    <p class="panel-subtitle">Giai đoạn: 1 Tháng 7 2021 - 6 Tháng 7 2021</p>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="metric">
+                                <span class="icon"><i class="fa fa-download"></i></span>
+                                <p>
+                                    <span class="number">1,252</span>
+                                    <span class="title">Lượt tải</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="metric">
+                                <span class="icon"><i class="fa fa-shopping-bag"></i></span>
+                                <p>
+                                    <span class="number">203</span>
+                                    <span class="title">Hàng bán</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="metric">
+                                <span class="icon"><i class="fa fa-eye"></i></span>
+                                <p>
+                                    <span class="number">274,678</span>
+                                    <span class="title">Lượt truy cập</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="metric">
+                                <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                                <p>
+                                    <span class="number">35%</span>
+                                    <span class="title">Chuyển đổi</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="headline-chart" class="ct-chart"></div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="weekly-summary text-right">
+                                <span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
+                                <span class="info-label">Tổng doanh số</span>
+                            </div>
+                            <div class="weekly-summary text-right">
+                                <span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
+                                <span class="info-label">Thu nhập hàng tháng</span>
+                            </div>
+                            <div class="weekly-summary text-right">
+                                <span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
+                                <span class="info-label">Tổng thu nhập</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END OVERVIEW -->
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- RECENT PURCHASES -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Các giao dịch mua hàng gần đây</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body no-padding">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tên</th>
+                                        <th>Số tiền</th>
+                                        <th>Thời gian</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#">763648</a></td>
+                                        <td>Thành</td>
+                                        <td>30,000,000VNĐ</td>
+                                        <td>5 Tháng 4 2021</td>
+                                        <td><span class="label label-success">ĐÃ HOÀN THÀNH</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">763649</a></td>
+                                        <td>Bằng</td>
+                                        <td>2,500,000VNĐ</td>
+                                        <td>3 Tháng 5 2020</td>
+                                        <td><span class="label label-warning">ĐANG THỰC HIỆN</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">763650</a></td>
+                                        <td>Châu</td>
+                                        <td>10,000,000VNĐ</td>
+                                        <td>1 Tháng 3 2021</td>
+                                        <td><span class="label label-danger">THẤT BẠI</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">763651</a></td>
+                                        <td>Hùng</td>
+                                        <td>40,000,000VNĐ</td>
+                                        <td>4 Tháng 6 2019</td>
+                                        <td><span class="label label-success">THÀNH CÔNG</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">763652</a></td>
+                                        <td>Tiến</td>
+                                        <td>24,500,000VNĐ</td>
+                                        <td>16 Tháng 8 2020</td>
+                                        <td><span class="label label-success">THÀNH CÔNG</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> 24 giờ trước</span></div>
+                                <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Xem tất ca giao dịch</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END RECENT PURCHASES -->
+                </div>
+                <div class="col-md-6">
+                    <!-- MULTI CHARTS -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Phép chiếu & hiện thực hóa</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="visits-trends-chart" class="ct-chart"></div>
+                        </div>
+                    </div>
+                    <!-- END MULTI CHARTS -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <!-- TODO LIST -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">To-Do List</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled todo-list">
+                                <li>
+                                    <label class="control-inline fancy-checkbox">
+                                        <input type="checkbox"><span></span>
+                                    </label>
+                                    <p>
+                                        <span class="title">Khởi động lại máy chủ</span>
+                                        <span class="short-description">Tích hợp động các công nghệ lấy khách hàng làm trung tâm mà không cần nguồn lực hợp tác.</span>
+                                        <span class="date">9 Tháng 11, 2019</span>
+                                    </p>
+                                    <div class="controls">
+                                        <a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label class="control-inline fancy-checkbox">
+                                        <input type="checkbox"><span></span>
+                                    </label>
+                                    <p>
+                                        <span class="title">Kiểm tra lại tình huống tải lên</span>
+                                        <span class="short-description">Triển khai một cách thuyết phục các mối quan hệ nhấp chuột và thực tế mà không cần các chỉ số hiệu quả cao.</span>
+                                        <span class="date">23 Tháng 7 2020</span>
+                                    </p>
+                                    <div class="controls">
+                                        <a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label class="control-inline fancy-checkbox">
+                                        <input type="checkbox"><span></span>
+                                    </label>
+                                    <p>
+                                        <strong>Cuộc họp thông số kỹ thuật chức năng</strong>
+                                        <span class="short-description">Đơn độc hóa hình thành các năng lực cốt lõi tập trung vào khách hàng sau sự sẵn sàng song song của web.</span>
+                                        <span class="date">5 Tháng 5 2021</span>
+                                    </p>
+                                    <div class="controls">
+                                        <a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END TODO LIST -->
+                </div>
+                <div class="col-md-5">
+                    <!-- TIMELINE -->
+                    <div class="panel panel-scrolling">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Hoạt động người dùng gần đây</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled activity-list">
+                                <li>
+                                    <img src="assets/img/user1.png" alt="Avatar" class="img-circle pull-left avatar">
+                                    <p><a href="#">Thành</a> đã hoàn thành 80% nhiệm vụ <span class="timestamp">20 phút trước</span></p>
+                                </li>
+                                <li>
+                                    <img src="assets/img/user2.png" alt="Avatar" class="img-circle pull-left avatar">
+                                    <p><a href="#">Tiến</a> đã được thêm làm thành viên nhóm vào dự án <a href="#">Cập nhật hệ thống</a> <span class="timestamp">Hôm qua</span></p>
+                                </li>
+                                <li>
+                                    <img src="assets/img/user3.png" alt="Avatar" class="img-circle pull-left avatar">
+                                    <p><a href="#">Bằng</a> đã tạo một chế độ xem bản đồ nhiệt mới <a href="#">Trang đích</a> <span class="timestamp">2 ngày trước</span></p>
+                                </li>
+                                <li>
+                                    <img src="assets/img/user4.png" alt="Avatar" class="img-circle pull-left avatar">
+                                    <p><a href="#">Hùng</a> đã hoàn thành tất cả các nhiệm vụ <span class="timestamp">2 ngày trước</span></p>
+                                </li>
+                                <li>
+                                    <img src="assets/img/user5.png" alt="Avatar" class="img-circle pull-left avatar">
+                                    <p><a href="#">Châu</a> bắt đầu một cuộc thảo luận <a href="#">Cuộc họp hàng tuần</a> <span class="timestamp">3 ngày trước</span></p>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-primary btn-bottom center-block">Tải Thêm</button>
+                        </div>
+                    </div>
+                    <!-- END TIMELINE -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- TASKS -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Nhiệm vụ của tôi</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled task-list">
+                                <li>
+                                    <p>Cập nhật cài đặt người dùng <span class="label-percent">23%</span></p>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width:23%">
+                                            <span class="sr-only">23% Hoàn thành</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Kiểm tra & Căng thẳng tải <span class="label-percent">80%</span></p>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Hoàn Thành</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Kiểm tra sao chép dữ liệu <span class="label-percent">100%</span></p>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                            <span class="sr-only">Thành Công</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Kiểm tra máy chủ <span class="label-percent">45%</span></p>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                            <span class="sr-only">45% Hoàn thành</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Phát triển ứng dụng dành cho thiết bị di động <span class="label-percent">10%</span></p>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+                                            <span class="sr-only">10% Hoàn thành</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END TASKS -->
+                </div>
+                <div class="col-md-4">
+                    <!-- VISIT CHART -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Lượt truy cập trang web</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="visits-chart" class="ct-chart"></div>
+                        </div>
+                    </div>
+                    <!-- END VISIT CHART -->
+                </div>
+                <div class="col-md-4">
+                    <!-- REALTIME CHART -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Tải hệ thống</h3>
+                            <div class="right">
+                                <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                                <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="system-load" class="easy-pie-chart" data-percent="70">
+                                <span class="percent">70</span>
+                            </div>
+                            <h4>Tải CPU</h4>
+                            <ul class="list-unstyled list-justify">
+                                <li>Cao: <span>95%</span></li>
+                                <li>Trung bình: <span>87%</span></li>
+                                <li>Thấp: <span>20%</span></li>
+                                <li>Chủ đề: <span>996</span></li>
+                                <li>Quy trình: <span>259</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END REALTIME CHART -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+</div>
+

@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "BillManager";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <h3 class="page-title">Thông tin về hóa đơn</h3>
+            <div>
+                <button href="view-create-publisher.html" class="button-them">Thêm</button>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BASIC TABLE -->
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Khách hàng</th>
+                                        <th>Hàng mua</th>
+                                        <th>Ngày mua</th>
+                                        <th>Vận chuyển</th>
+                                        <th>Thanh toán</th>
+                                        <th>Trạng thái</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Nguyễn Thị A</td>
+                                        <td>Quà tặng cuộc sống, Truyện kiều</td>
+                                        <td>22-10-2000</td>
+                                        <td>Viettel post</td>
+                                        <td>Tiền mặt</td>
+                                        <td>Thành công</td>
+                                        <td>
+                                            <p>
+                                                <a href="#">Chi tiết </a>|
+                                                <a href="#">Sửa </a>|
+                                                <a href="#">Xóa </a>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Nguyễn Thị B</td>
+                                        <td>Quà tặng cuộc sống, Truyện kiều</td>
+                                        <td>22-10-2000</td>
+                                        <td>Viettel post</td>
+                                        <td>Tiền mặt</td>
+                                        <td>Đang chuyển hàng</td>
+                                        <td>
+                                            <p>
+                                                <a href="#">Chi tiết </a>|
+                                                <a href="#">Sửa </a>|
+                                                <a href="#">Xóa </a>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END BASIC TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+</div>
+
+
