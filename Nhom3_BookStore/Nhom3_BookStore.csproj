@@ -142,11 +142,73 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
+    <Content Include="wwwroot\css\animate.css" />
+    <Content Include="wwwroot\css\bootstrap.min.css" />
+    <Content Include="wwwroot\css\font-awesome.min.css" />
+    <Content Include="wwwroot\css\main.css" />
+    <Content Include="wwwroot\css\prettyPhoto.css" />
+    <Content Include="wwwroot\css\price-range.css" />
+    <Content Include="wwwroot\css\responsive.css" />
+    <Content Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\images\404\404.png" />
+    <Content Include="wwwroot\images\cart\Anh1.jpg" />
+    <Content Include="wwwroot\images\cart\Anh2.jpg" />
+    <Content Include="wwwroot\images\cart\Anh3.jpg" />
+    <Content Include="wwwroot\images\cart\delivery.jpg" />
+    <Content Include="wwwroot\images\home\banner1.jpg" />
+    <Content Include="wwwroot\images\home\banner2.jpg" />
+    <Content Include="wwwroot\images\home\banner3.jpg" />
+    <Content Include="wwwroot\images\home\bg_border.png" />
+    <Content Include="wwwroot\images\home\girl1.jpg" />
+    <Content Include="wwwroot\images\home\girl2.jpg" />
+    <Content Include="wwwroot\images\home\girl3.jpg" />
+    <Content Include="wwwroot\images\home\searchicon.png" />
+    <Content Include="wwwroot\images\product-details\111.jpg" />
+    <Content Include="wwwroot\images\product-details\cr.jpg" />
+    <Content Include="wwwroot\images\product-details\icons8_star_48px_3.png" />
+    <Content Include="wwwroot\images\product-details\ielts.jpg" />
+    <Content Include="wwwroot\images\shop\advertisementimage.jfif" />
+    <Content Include="wwwroot\images\shop\Anh1.jpg" />
+    <Content Include="wwwroot\img\bduong_la_cam.jpg" />
+    <Content Include="wwwroot\img\bo_sap.jpg" />
+    <Content Include="wwwroot\img\buoi-nam-roi.jpg" />
+    <Content Include="wwwroot\img\buoi_da_xanh_2.jpg" />
+    <Content Include="wwwroot\img\buoi_dien.jpg" />
+    <Content Include="wwwroot\img\cam_canh_xin.JPG" />
+    <Content Include="wwwroot\img\cam_xoan.JPG" />
+    <Content Include="wwwroot\img\chuoi-cao.jpg" />
+    <Content Include="wwwroot\img\chuoi_ngu.jpg" />
+    <Content Include="wwwroot\img\dau_tay_nhat.jpg" />
+    <Content Include="wwwroot\img\dua_hau_ruot_vang.jpg" />
+    <Content Include="wwwroot\img\img_4905.jpg" />
+    <Content Include="wwwroot\img\logo.png" />
+    <Content Include="wwwroot\img\mang_cau_xiem.jpg" />
+    <Content Include="wwwroot\img\nho_xanh_ninh_thuan.jpg" />
+    <Content Include="wwwroot\img\oi_le_nong_nghiep1.JPG" />
+    <Content Include="wwwroot\img\phamthehung.png" />
+    <Content Include="wwwroot\img\product01.png" />
+    <Content Include="wwwroot\img\product02.png" />
+    <Content Include="wwwroot\img\product03.png" />
+    <Content Include="wwwroot\img\product04.png" />
+    <Content Include="wwwroot\img\product05.png" />
+    <Content Include="wwwroot\img\product06.png" />
+    <Content Include="wwwroot\img\qua_thanh_mai1.jpg" />
+    <Content Include="wwwroot\js\bootstrap.min.js" />
+    <Content Include="wwwroot\js\contact.js" />
+    <Content Include="wwwroot\js\gmaps.js" />
+    <Content Include="wwwroot\js\html5shiv.js" />
+    <Content Include="wwwroot\js\jquery.js" />
+    <Content Include="wwwroot\js\jquery.prettyPhoto.js" />
+    <Content Include="wwwroot\js\jquery.scrollUp.min.js" />
+    <Content Include="wwwroot\js\main.js" />
+    <Content Include="wwwroot\js\price-range.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,17 +248,37 @@
     <Content Include="Areas\Admin\Views\Home\UserProfile.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Account.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\ConfirmPayment.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\ProductDetails.cshtml" />
+    <Content Include="Views\Home\Sanpham.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Aside.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Nav.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
