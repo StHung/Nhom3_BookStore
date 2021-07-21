@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Sanpham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<BaiTap13.Models.Hang>
+<div class="container">
+    <!-- row -->
+    <div class="row">
+        <!-- ASIDE -->
+        @{
+            Html.RenderAction("_Aside", "Home");
+        }
+        <!-- /ASIDE -->
+        <!-- STORE -->
+        <div id="store" class="col-md-9">
+            <!-- store products -->
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <!-- product -->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="product">
+                            <div class="product-img">
+                                @{
+                                    string ImagePath = "~/wwwroot/img/" + item.HinhAnh;
+                                }
+                                <img src="@Url.Content(ImagePath)" alt="" width="250" height="250" />
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">
+                                    @Html.DisplayFor(modelItem => item.Nha_CC.TenNCC)
+                                </p>
+                                <h3 class="product-name">
+                                    <a href="@Url.Action("Details", "Home", new { id = item.MaHang.Trim()})">
+                                        @Html.DisplayFor(modelItem => item.TenHang)
+                                    </a>
+                                </h3>
+                                <h4 class="product-price">
+                                    @Html.DisplayFor(modelItem => item.Gia) VND
+                                </h4>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product -->
+                }
+            </div>
+            <!-- /store products -->
+            <!-- store bottom filter -->
+            <div class="store-filter clearfix">
+                <ul class="store-pagination">
+                    <li class="active">1</li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+            </div>
+            <!-- /store bottom filter -->
+        </div>
+        <!-- /STORE -->
+    </div>
+    <!-- /row -->
+</div>
+

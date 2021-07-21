@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li class="active">Thanh toán</li>
+            </ol>
+        </div><!--/breadcrums-->
+        <div class="register-req">
+            <h5 class="heading">Đăng ký và thanh toán để dễ dàng truy cập vào lịch sử đặt hàng, hoặc thanh toán dưới dạng khách.</h5>
+        </div><!--/register-req-->
+
+        <div class="review-payment">
+            <h2>Sản phẩm</h2>
+        </div>
+
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Sản phẩm</td>
+                        <td class="description"></td>
+                        <td class="price">Giá</td>
+                        <td class="quantity">Số lượng</td>
+                        <td class="total">Tổng tiền</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="cart_product">
+                            <a href=""><img class="checkout_crop" src="images/product-details/ielts.jpg" alt=""></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">HỘP FLASH CARDS - 600 ...</a></h4>
+                            <p>NXB: Kim Đồng</p>
+                        </td>
+                        <td class="cart_price">
+                            <p>110.500 VNĐ</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href=""> - </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href=""> + </a>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">110.500 VNĐ</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="cart_product">
+                            <a href=""><img class="checkout_crop" src="images/product-details/111.jpg" alt=""></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">BARRON'S ESSENTIAL WORDS FOR THE IELTS...</a></h4>
+                            <p>NXB: 1089772</p>
+                        </td>
+                        <td class="cart_price">
+                            <p>176.800 VNĐ</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href=""> - </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href=""> + </a>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">176.800 VNĐ</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="cart_product">
+                            <a href=""><img class="checkout_crop" src="images/product-details/cr.jpg" alt=""></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">CRACK IELTS GENERAL WRITING</a></h4>
+                            <p>NXB: 1980 Books</p>
+                        </td>
+                        <td class="cart_price">
+                            <p>100.000 VNĐ</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href=""> - </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href=""> + </a>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">100.000 VNĐ</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">&nbsp;</td>
+                        <td colspan="2">
+                            <table class="table table-condensed total-result">
+                                <tr>
+                                    <td>Thành tiền: </td>
+                                    <td>387.300 VNĐ</td>
+                                </tr>
+                                <tr>
+                                    <td>Thuế VAT:</td>
+                                    <td>20.000 VNĐ</td>
+                                </tr>
+                                <tr class="shipping-cost">
+                                    <td>Phí vận chuyển</td>
+                                    <td>Free</td>
+                                </tr>
+                                <tr>
+                                    <td>Tổng tiền</td>
+                                    <td><span>407.300 VNĐ</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr />
+        <div class="payment-options">
+            <div class="review-payment">
+                <h2>Hình thức thanh toán</h2>
+                <span>
+                    <label><input type="radio"> Chuyển khoản trực tiếp</label>
+                </span>
+                <span>
+                    <label><input type="radio"> Thanh toán khi nhận hàng</label>
+                </span>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-primary float-right" href="@Url.Action("ConfirmPayment", "Home")">Xác nhận thanh toán</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
