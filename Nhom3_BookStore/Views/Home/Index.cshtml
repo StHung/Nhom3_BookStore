@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <h1><span>BOOK</span>STORE</h1>
+                                <h2>KEN HONDE</h2>
+                                <p>Tuyển chọn những tựa sách tốt nhất cho bạn</p>
+                                <button type="button" class="btn btn-default get">Mua ngay</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="~/wwwroot/images/home/banner1.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>BOOK</span>STORE</h1>
+                                <h2>FLASH SALE</h2>
+                                <p>Ưu đãi ngay hôm nay</p>
+                                <button type="button" class="btn btn-default get">Mua ngay</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="~/wwwroot/images/home/banner2.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>BOOK</span>STORE</h1>
+                                <h2>CHÀO HÈ</h2>
+                                <p>Săn sách thả ga không lo về giá</p>
+                                <button type="button" class="btn btn-default get">Xem ngay</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="~/wwwroot/images/home/banner3.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Danh mục sản phẩm</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                        <span class="badge pull-right"></i></span>
+                                        Sách Luyện Thi THPT Quốc Gia
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#mens">
+                                        <span class="badge pull-right"></span>
+                                        Sách Thiếu Nhi
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#womens">
+                                        <span class="badge pull-right"></span>
+                                        Sách Phong Thủy Bói Toán
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Bán Chạy</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Mới</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Ngoại Ngữ</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Kỹ Năng Sống</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Tình Yêu</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Văn Học</a></h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="#">Sách Kiến Thức Bách Khoa</a></h4>
+                            </div>
+                        </div>
+                    </div><!--/category-products-->
+
+                    <div class="brands_products">
+                        <!--brands_products-->
+                        <h2>Nhà xuất bản</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#"> <span class="pull-right">(50)</span>Tâm trí lực</a></li>
+                                <li><a href="#"> <span class="pull-right">(56)</span>Moon books</a></li>
+                                <li><a href="#"> <span class="pull-right">(27)</span>Olympic Books</a></li>
+                                <li><a href="#"> <span class="pull-right">(32)</span>Thiên Minh Book</a></li>
+                                <li><a href="#"> <span class="pull-right">(5)</span>Nhà Sách Cửu Đức</a></li>
+                                <li><a href="#"> <span class="pull-right">(9)</span>Nhà Sách Cửu Đức</a></li>
+                                <li><a href="#"> <span class="pull-right">(24)</span>Tủ Sách Thiếu Nhi UIH</a></li>
+                                <li><a href="#"> <span class="pull-right">(425)</span>Nhà Sách PHANBOOK</a></li>
+                                <li><a href="#"> <span class="pull-right">(18)</span>TCD Books</a></li>
+                                <li><a href="#"> <span class="pull-right">(400)</span>Công Ty Sách Thời Đại</a></li>
+                                <li><a href="#"> <span class="pull-right">(65)</span>Nhà Sách R Books</a></li>
+                                <li><a href="#"> <span class="pull-right">(100)</span>Nhà Xuất Bản Phụ Nữ</a></li>
+                                <li><a href="#"> <span class="pull-right">(114)</span>Hoa Học Trò</a></li>
+                                <li><a href="#"> <span class="pull-right">(45)</span>Nhà Sách Quảng Văn</a></li>
+                            </ul>
+                        </div>
+                    </div><!--/brands_products-->
+                </div>
+            </div>
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Các mặt hàng</h2>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a href="#"><img src="~/wwwroot/images/shop/Anh1.jpg" alt="bìa sách" /></a>
+                                    <h2>100,000VNĐ</h2>
+                                    <p>Kinh nhân quả ba đời</p>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+
