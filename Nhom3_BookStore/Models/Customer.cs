@@ -2,6 +2,7 @@ namespace Nhom3_BookStore.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -16,6 +17,7 @@ namespace Nhom3_BookStore.Models
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
+        [DisplayName("Khách hàng ID")]
         [StringLength(20)]
         public string CustomerID { get; set; }
 
