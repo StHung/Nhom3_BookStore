@@ -10,12 +10,10 @@ namespace Nhom3_BookStore.Models
     public partial class Bill
     {
         [Key]
-        [Column(Order = 0)]
         [StringLength(20)]
         public string BillNo { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(20)]
         public string CartID { get; set; }
 

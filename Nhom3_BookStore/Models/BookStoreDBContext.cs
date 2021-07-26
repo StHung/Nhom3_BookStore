@@ -8,19 +8,19 @@ namespace Nhom3_BookStore.Models
     public partial class BookStoreDBContext : DbContext
     {
         public BookStoreDBContext()
-            : base("name=BookStoreDBContext")
+            : base("name=BookStoreDBContext1")
         {
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public virtual DbSet<Bill> Bills { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -50,6 +50,14 @@ namespace Nhom3_BookStore.Models
             modelBuilder.Entity<Admin>()
                 .Property(e => e.Password)
                 .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Bill>()
+                .Property(e => e.BillNo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Bill>()
+                .Property(e => e.CartID)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Book>()
@@ -130,22 +138,14 @@ namespace Nhom3_BookStore.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<ShoppingCart>()
-                .HasMany(e => e.CartDetails)
-                .WithRequired(e => e.ShoppingCart)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<ShoppingCart>()
                 .HasMany(e => e.Bills)
                 .WithRequired(e => e.ShoppingCart)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Bill>()
-                .Property(e => e.BillNo)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Bill>()
-                .Property(e => e.CartID)
-                .IsUnicode(false);
+            modelBuilder.Entity<ShoppingCart>()
+                .HasMany(e => e.CartDetails)
+                .WithRequired(e => e.ShoppingCart)
+                .WillCascadeOnDelete(false);
         }
     }
 }

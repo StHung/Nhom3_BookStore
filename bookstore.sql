@@ -1,9 +1,11 @@
-use master
+use master 
 go
 create database BookStore
 go
+
 use BookStore
 go
+
 Create table [Category]
 (
 	[CategoryID] Varchar(20) NOT NULL,
@@ -58,7 +60,8 @@ Create table [Bill]
 	[DeliveryMethod] Nvarchar(100) NULL,
 	[PaymentMethod] Nvarchar(100) NULL,
 	[DeliveryAddress] Nvarchar(500) NULL,
-	[DeliveryState] Nvarchar(100) NULL
+	[DeliveryState] Nvarchar(100) NULL,
+Primary Key ([BillNo])
 ) 
 go
 

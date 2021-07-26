@@ -12,8 +12,8 @@ namespace Nhom3_BookStore.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ShoppingCart()
         {
-            CartDetails = new HashSet<CartDetail>();
             Bills = new HashSet<Bill>();
+            CartDetails = new HashSet<CartDetail>();
         }
 
         [Key]
@@ -25,11 +25,11 @@ namespace Nhom3_BookStore.Models
         public string CustomerID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bill> Bills { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartDetail> CartDetails { get; set; }
 
         public virtual Customer Customer { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bill> Bills { get; set; }
     }
 }
