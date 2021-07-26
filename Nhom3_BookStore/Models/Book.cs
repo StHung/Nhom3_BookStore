@@ -1,7 +1,8 @@
-namespace Nhom3_BookStore.Models
+﻿namespace Nhom3_BookStore.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -14,41 +15,55 @@ namespace Nhom3_BookStore.Models
         {
             CartDetails = new HashSet<CartDetail>();
         }
-
+        [Key]
         [StringLength(20)]
+        [DisplayName("Mã sách")]
+        [Required(ErrorMessage = "Mã sách không được để trống!")]
         public string BookID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mã nhà xuất bản không được để trống!")]
         [StringLength(20)]
+        [DisplayName("Mã nhà xuất bản")]
         public string PublisherID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mã danh mục không được để trống!")]
         [StringLength(20)]
+        [DisplayName("Mã danh mục")]
         public string CategoryID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tiêu đề không được để trống!")]
         [StringLength(150)]
+        [DisplayName("Tiêu đề")]
         public string Tittle { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tác giả không được để trống!")]
         [StringLength(50)]
+        [DisplayName("Tác giả")]
         public string Author { get; set; }
 
+        [DisplayName("Năm phát hành")]
         public int? ReleaseYear { get; set; }
 
+        [DisplayName("Số trang")]
         public int? NumberOfPages { get; set; }
 
+        [Required(ErrorMessage = "Giá bán không được để trống!")]
+        [DisplayName("Giá bán")]
         public decimal? Price { get; set; }
 
         [Column(TypeName = "ntext")]
+        [DisplayName("Mô tả")]
         public string Description { get; set; }
 
         [StringLength(50)]
+        [DisplayName("Kích thước")]
         public string Dimension { get; set; }
 
         [StringLength(150)]
+        [DisplayName("Ảnh")]
         public string Images { get; set; }
 
+        [DisplayName("Lượng có")]
         public int? Quantity { get; set; }
 
         public virtual Category Category { get; set; }
