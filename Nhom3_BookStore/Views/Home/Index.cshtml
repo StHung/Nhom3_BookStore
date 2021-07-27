@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model IEnumerable<Nhom3_BookStore.Models.Book>
 
 <section id="slider">
     <!--slider-->
@@ -171,18 +172,26 @@
                 <div class="features_items">
                     <!--features_items-->
                     <h2 class="title text-center">Các mặt hàng</h2>
-                    <div class="col-sm-3">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <a href="#"><img src="~/wwwroot/images/shop/Anh1.jpg" alt="bìa sách" /></a>
-                                    <h2>100,000VNĐ</h2>
-                                    <p>Kinh nhân quả ba đời</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        @{ 
+                                            string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
+                                        }
+                                        <a href="#">
+                                            <img src="@Url.Content(ImagePath)" width="100" height="250" alt="bìa sách" />
+                                        </a>
+                                        <h2>@Html.DisplayFor(modelItem => item.Price) VNĐ</h2>
+                                        <p>@Html.DisplayFor(modelItem => item.Tittle)</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div><!--features_items-->
             </div>
         </div>
