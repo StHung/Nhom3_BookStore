@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Nhom3_BookStore.Models.Book>
-
+﻿@model PagedList.IPagedList<Nhom3_BookStore.Models.Book>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -13,63 +14,81 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Tittle)
+            @Html.ActionLink("Mã sách", "Index",
+                          new { sortOrder = ViewBag.SortByID },
+                          htmlAttributes: new { style = "color: #676A6D;" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Author)
+            @Html.ActionLink("Tiêu đề sách", "Index",
+                      new { sortOrder = ViewBag.SortByName },
+                      htmlAttributes: new { style = "color: #676A6D;" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseYear)
+            Tác giả
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumberOfPages)
+            Năm phát hành
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Số trang
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Images)
+            @Html.ActionLink("Giá", "Index",
+                      new { sortOrder = ViewBag.SortByPrice },
+                      htmlAttributes: new { style = "color: #676A6D;" })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Quantity)
+            Ảnh bìa
+        </th>
+        <th>
+            Lượng có
         </th>
         <th>
             Thao tác
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tittle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReleaseYear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberOfPages)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>   
-        <td>
-            @{ 
-                string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
-            }
-            <img src="@Url.Content(ImagePath)" width="100" alt="ảnh bìa"  class="img-thumbnail"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Sửa", "Edit", new { id=item.BookID.Trim() }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.BookID.Trim() }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.BookID.Trim() })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tittle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @{
+                    string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" alt="ảnh bìa" class="img-thumbnail" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.BookID.Trim() }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.BookID.Trim() }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.BookID.Trim() })
+            </td>
+        </tr>
+                    }
 
 </table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new {page}
+))

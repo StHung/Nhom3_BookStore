@@ -195,6 +195,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BillsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BooksController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -243,6 +244,10 @@
     <Content Include="Areas\Admin\Views\Books\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Bills\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
