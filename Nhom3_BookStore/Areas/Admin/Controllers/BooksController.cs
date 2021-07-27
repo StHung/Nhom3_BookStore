@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Nhom3_BookStore.Models;
-
+using PagedList;
 namespace Nhom3_BookStore.Areas.Admin.Controllers
 {
     public class BooksController : Controller
@@ -15,10 +15,40 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Admin/Books
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, int? page)
         {
+            ViewBag.SortByID = String.IsNullOrEmpty(sortOrder) ? "ma_desc" : "";
+            ViewBag.SortByName = sortOrder == "Name" ? "name_desc" : "name";
+            ViewBag.SortByPrice = sortOrder == "Gia" ? "gia_desc" : "Gia";
             var books = db.Books.Include(b => b.Category).Include(b => b.Publisher);
-            return View(books.ToList());
+
+            switch (sortOrder)
+            {
+                case "Name":
+                    books = books.OrderBy(b => b.Tittle);
+                    break;
+                case "name_desc":
+                    books = books.OrderByDescending(b => b.Tittle);
+                    break;
+                case "Gia":
+                    books = books.OrderBy(b => b.Price);
+                    break;
+                case "gia_desc":
+                    books = books.OrderByDescending(b => b.Price);
+                    break;
+                case "ma_desc":
+                    books = books.OrderByDescending(b => b.BookID);
+                    break;
+                default:
+                    books = books.OrderBy(b =>b.BookID);
+                    break;
+            }
+
+            int pageSize = 10;
+
+            int pageNumber = (page ?? 1);
+
+            return View(books.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Books/Details/5
