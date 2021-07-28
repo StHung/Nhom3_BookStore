@@ -1,7 +1,8 @@
-namespace Nhom3_BookStore.Models
+﻿namespace Nhom3_BookStore.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -17,27 +18,40 @@ namespace Nhom3_BookStore.Models
         }
 
         [StringLength(20)]
+        [DisplayName("Mã khách hàng")]
+        [Required(ErrorMessage = "Mã khách hàng không được để trống!")]
         public string CustomerID { get; set; }
 
-        [Required]
         [StringLength(100)]
+        [DisplayName("Tên khách hàng")]
+        [Required(ErrorMessage = "Tên khách hàng không được để trống!")]
         public string CustomerName { get; set; }
 
-        [Required]
+        [DisplayName("Giới tính")]
+        [Required(ErrorMessage = "Giới tính không được để trống!")]
         [StringLength(10)]
         public string Gender { get; set; }
 
+        [DisplayName("Ngày sinh")]
+        [Required(ErrorMessage = "Ngày sinh không được để trống!")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
+
+        [DisplayName("Số điện thoại")]
+        [Required(ErrorMessage = "Số điện thoại không được để trống!")]
         [StringLength(15)]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Required]
+
+        [DisplayName("Email"), DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Email không được để trống!")]
         [StringLength(100)]
         public string Email { get; set; }
 
-        [Required]
+
+        [DisplayName("Địa chỉ")]
+        [Required(ErrorMessage = "Địa chỉ không được để trống!")]
         [StringLength(150)]
         public string Address { get; set; }
 
