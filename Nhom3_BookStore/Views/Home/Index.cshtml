@@ -72,101 +72,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <div class="left-sidebar">
-                    <h2>Danh mục sản phẩm</h2>
-                    <div class="panel-group category-products" id="accordian">
-                        <!--category-productsr-->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                        <span class="badge pull-right"></i></span>
-                                        Sách Luyện Thi THPT Quốc Gia
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#mens">
-                                        <span class="badge pull-right"></span>
-                                        Sách Thiếu Nhi
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordian" href="#womens">
-                                        <span class="badge pull-right"></span>
-                                        Sách Phong Thủy Bói Toán
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Bán Chạy</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Mới</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Ngoại Ngữ</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Kỹ Năng Sống</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Tình Yêu</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Văn Học</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Sách Kiến Thức Bách Khoa</a></h4>
-                            </div>
-                        </div>
-                    </div><!--/category-products-->
-
-                    <div class="brands_products">
-                        <!--brands_products-->
-                        <h2>Nhà xuất bản</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#"> <span class="pull-right">(50)</span>Tâm trí lực</a></li>
-                                <li><a href="#"> <span class="pull-right">(56)</span>Moon books</a></li>
-                                <li><a href="#"> <span class="pull-right">(27)</span>Olympic Books</a></li>
-                                <li><a href="#"> <span class="pull-right">(32)</span>Thiên Minh Book</a></li>
-                                <li><a href="#"> <span class="pull-right">(5)</span>Nhà Sách Cửu Đức</a></li>
-                                <li><a href="#"> <span class="pull-right">(9)</span>Nhà Sách Cửu Đức</a></li>
-                                <li><a href="#"> <span class="pull-right">(24)</span>Tủ Sách Thiếu Nhi UIH</a></li>
-                                <li><a href="#"> <span class="pull-right">(425)</span>Nhà Sách PHANBOOK</a></li>
-                                <li><a href="#"> <span class="pull-right">(18)</span>TCD Books</a></li>
-                                <li><a href="#"> <span class="pull-right">(400)</span>Công Ty Sách Thời Đại</a></li>
-                                <li><a href="#"> <span class="pull-right">(65)</span>Nhà Sách R Books</a></li>
-                                <li><a href="#"> <span class="pull-right">(100)</span>Nhà Xuất Bản Phụ Nữ</a></li>
-                                <li><a href="#"> <span class="pull-right">(114)</span>Hoa Học Trò</a></li>
-                                <li><a href="#"> <span class="pull-right">(45)</span>Nhà Sách Quảng Văn</a></li>
-                            </ul>
-                        </div>
-                    </div><!--/brands_products-->
-                </div>
+                @{ 
+                    Html.RenderAction("_Sidebar", "Home");
+                }
             </div>
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
@@ -174,7 +82,7 @@
                     <h2 class="title text-center">Các mặt hàng</h2>
                     @foreach (var item in Model)
                     {
-                        <div class="col-sm-4">
+                        <div class="col-sm-3" style="height:450px;">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
@@ -182,10 +90,12 @@
                                             string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
                                         }
                                         <a href="#">
-                                            <img src="@Url.Content(ImagePath)" width="100" height="250" alt="bìa sách" />
+                                            <img src="@Url.Content(ImagePath)" height="250" alt="bìa sách" />
                                         </a>
-                                        <h2>@Html.DisplayFor(modelItem => item.Price) VNĐ</h2>
-                                        <p>@Html.DisplayFor(modelItem => item.Tittle)</p>
+                                        <h2>@Html.DisplayFor(modelItem => item.Price).ToString() VNĐ</h2>
+                                        <div style="height:60px;">
+                                            <p>@Html.DisplayFor(modelItem => item.Tittle)</p>
+                                        </div>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                     </div>
                                 </div>

@@ -157,4 +157,3 @@ C:\Users\phamt\OneDrive\Desktop\BTLASP\Nhom3_BookStore\obj\Debug\Nhom3_BookStore
 C:\Users\phamt\OneDrive\Desktop\BTLASP\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.csproj.CopyComplete
 C:\Users\phamt\OneDrive\Desktop\BTLASP\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.dll
 C:\Users\phamt\OneDrive\Desktop\BTLASP\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.pdb
-C:\Users\phamt\OneDrive\Desktop\BTLASP\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.csproj.AssemblyReference.cache

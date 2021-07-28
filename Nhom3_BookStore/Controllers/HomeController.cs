@@ -10,10 +10,24 @@ namespace Nhom3_BookStore.Controllers
     {
         BookStoreDBContext db = new BookStoreDBContext();
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(string categoryid)
         {
-            var books = db.Books.ToList();
+            List<Book> books = new List<Book>();
+            if(categoryid == null)
+            {
+                books = db.Books.ToList();
+            }
+            else
+            {
+                books = db.Books.Where(b => b.CategoryID.Equals(categoryid)).ToList();
+            }
             return View(books);
+        }
+        [ChildActionOnly]
+        public ActionResult _Sidebar()
+        {
+            var categories = db.Categories;
+            return PartialView(categories.ToList());
         }
     }
 }
