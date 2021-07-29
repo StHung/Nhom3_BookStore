@@ -3,76 +3,56 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    decimal totalMoney = 0;
 }
 
 <h2>Chi tiết hóa đơn</h2>
 
 <div>
-    <h4>Hóa Đơn</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ShoppingCart.Customer.CustomerName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShoppingCart.Customer.CustomerName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BillNo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BillNo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PurchaseDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PurchaseDate)
-        </dd>
-
-        @foreach (var item in Model)
-        {
-
-        }
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryMethod)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryMethod)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaymentMethod)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentMethod)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeliveryState)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeliveryState)
-        </dd>
-
-    </dl>
+    <h3>Mã đơn hàng: @Model.BillNo - Ngày lập: @Model.PurchaseDate.Value.ToShortDateString()</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <p><b>Tên khách hàng:</b> @Model.ShoppingCart.Customer.CustomerName</p>
+            <p><b>Địa chỉ giao hàng:</b> @Model.DeliveryAddress</p>
+            <p><b>Phương thức vận chuyển:</b> @Model.DeliveryMethod</p>
+            <p><b>Phương thức thanh toán:</b> @Model.PaymentMethod</p>
+            <p><b>Trạng thái đơn hàng:</b> @Model.DeliveryState</p>
+        </div>
+    </div>
+    <h3>
+        Danh sách mặt hàng
+    </h3>
+    <table class="table table-light table-bordered">
+        <thead style="background-color: #0f1012; color: #fff;">
+            <tr>
+                <th>Tiêu đề</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ShoppingCart.CartDetails.ToList())
+            {
+                <tr>
+                    @{
+                        decimal money = (decimal)(item.Book.Price * item.Amount);
+                        totalMoney += money;
+                    }
+                    <td>@item.Book.Tittle</td>
+                    <td>@item.Amount</td>
+                    <td>@item.Book.Price</td>
+                    <td>@money</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Tổng tiền</td>
+                <td>@totalMoney</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <p>
     @Html.ActionLink("Sửa", "Edit", new { id = Model.BillNo.Trim() }) |
