@@ -49,6 +49,7 @@
 
         [Required(ErrorMessage = "Giá bán không được để trống!")]
         [DisplayName("Giá bán")]
+        [DisplayFormat(DataFormatString = "{0: #,###}")]
         public decimal? Price { get; set; }
 
         [Column(TypeName = "ntext")]

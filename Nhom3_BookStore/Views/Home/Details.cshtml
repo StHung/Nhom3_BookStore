@@ -1,0 +1,105 @@
+﻿@model Nhom3_BookStore.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string ImagePath = "~/Areas/Admin/assets/productimages/" + Model.Images;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            @{
+                Html.RenderAction("_Sidebar", "Home");
+            }
+        </div>
+        <div class="col-sm-9 padding-right">
+            <div class="product-details">
+                <!--product-details-->
+                <div class="col-sm-4">
+                    <div class="view-product">
+                        <img src="@Url.Content(ImagePath)" alt="ảnh bìa sách" />
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="product-information">
+                        <!--/product-information-->
+                        <h1><b>@Model.Tittle.ToUpper()</b></h1>
+                        <p> <b>Danh mục:</b> @Html.DisplayFor(model => model.Category.CategoryName)</p>
+                        <p>
+                            <b>Nhà Xuất Bản:</b>
+                            @Html.DisplayFor(model => model.Category.CategoryName)
+                        </p>
+                        <p>
+                            <b>Tình trạng:</b>
+                            @{
+                                string state = "";
+                                if (Model.Quantity > 0)
+                                {
+                                    state = "Còn hàng";
+                                }
+                                else
+                                {
+                                    state = "Hết hàng";
+                                }
+                            }
+                            @state
+                        </p>
+                        <h3>
+                            <b>Giá: @Html.DisplayFor(model => model.Price) VNĐ</b>
+                        </h3>
+                        <button type="button" class="btn btn-fefault cart" style="margin-left: 0px;">
+                            <i class="fa fa-shopping-cart"></i>
+                            Thêm vào giỏ
+                        </button>
+                    </div><!--/product-information-->
+                </div>
+            </div><!--/product-details-->
+
+            <div style="margin-bottom: 32px;">
+                <!--/sale-info-->
+                <h2 class="title text-left">Mô tả sản phẩm</h2>
+                <h3 class="text-center"><b>@Html.DisplayFor(model => model.Tittle)</b></h3>
+                <p>
+                    @Html.DisplayFor(model => model.Description)
+                </p>
+            </div>
+            <div style="margin-bottom: 32px;">
+                <!--/sale-info-->
+                <h2 class="title text-left">Thông tin chi tiết</h2>
+                <table class="table table-bordered" style="width:80%; margin:auto;">
+                    <tr>
+                        <th width="30%">Tác giả</th>
+                        <td>
+                            @Model.Author
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Kích thước</th>
+                        <td>
+                            @Model.Dimension
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Số trang</th>
+                        <td>
+                            @Model.NumberOfPages
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nhà xuất bản</th>
+                        <td>
+                            @Model.Publisher.PublisherName
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Năm xuất bản</th>
+                        <td>
+                            @Model.ReleaseYear
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
