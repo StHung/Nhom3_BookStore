@@ -203,7 +203,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Book.cs" />
@@ -257,8 +256,12 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_Sidebar.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

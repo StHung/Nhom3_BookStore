@@ -12,7 +12,6 @@ namespace Nhom3_BookStore.Models
         {
         }
 
-        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Book> Books { get; set; }
@@ -24,24 +23,6 @@ namespace Nhom3_BookStore.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>()
-                .Property(e => e.AccountID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Account>()
-                .Property(e => e.Username)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Account>()
-                .Property(e => e.Password)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Account>()
-                .Property(e => e.CustomerID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Admin>()
                 .Property(e => e.Username)
                 .IsFixedLength()
@@ -109,11 +90,6 @@ namespace Nhom3_BookStore.Models
             modelBuilder.Entity<Customer>()
                 .Property(e => e.Email)
                 .IsFixedLength();
-
-            modelBuilder.Entity<Customer>()
-                .HasMany(e => e.Accounts)
-                .WithRequired(e => e.Customer)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
                 .HasMany(e => e.ShoppingCarts)

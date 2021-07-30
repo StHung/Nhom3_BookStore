@@ -1,9 +1,11 @@
 ﻿
+@model PagedList.IPagedList<Nhom3_BookStore.Models.Book>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model IEnumerable<Nhom3_BookStore.Models.Book>
 
 <section id="slider">
     <!--slider-->
@@ -103,8 +105,13 @@
                         </div>
                     }
                 </div><!--features_items-->
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page }
+                ))
+
             </div>
         </div>
     </div>
 </section>
-
+<br />

@@ -13,13 +13,12 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            Accounts = new HashSet<Account>();
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
 
         [StringLength(20)]
         [DisplayName("Mã khách hàng")]
-        [Required(ErrorMessage = "Mã khách hàng không được để trống!")]
+        //[Required(ErrorMessage = "Mã khách hàng không được để trống!")]
         public string CustomerID { get; set; }
 
         [StringLength(100)]
@@ -33,7 +32,8 @@
         public string Gender { get; set; }
 
         [DisplayName("Ngày sinh")]
-        [Required(ErrorMessage = "Ngày sinh không được để trống!")]
+        //[Required(ErrorMessage = "Ngày sinh không được để trống!")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
 
@@ -55,8 +55,11 @@
         [StringLength(150)]
         public string Address { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Account> Accounts { get; set; }
+        [Required(ErrorMessage ="Mật khẩu không được để trống!")]
+        [StringLength(50)]
+        [DisplayName("Mật khẩu")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
