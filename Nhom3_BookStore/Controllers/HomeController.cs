@@ -17,9 +17,9 @@ namespace Nhom3_BookStore.Controllers
         {
             List<Book> books = new List<Book>();
 
-            if (id == null)
+            if (id != null)
             {
-                books = db.Books.ToList();
+                books = db.Books.Where(b => b.CategoryID.Equals(id)).ToList();
             }
             else if (!String.IsNullOrEmpty(searchString))
             {
@@ -27,7 +27,7 @@ namespace Nhom3_BookStore.Controllers
             }
             else
             {
-                books = db.Books.Where(b => b.CategoryID.Equals(id)).ToList();
+                books = db.Books.ToList();
             }
 
             int pageSize = 16;

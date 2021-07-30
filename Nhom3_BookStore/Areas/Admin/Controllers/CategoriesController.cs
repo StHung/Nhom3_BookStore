@@ -19,7 +19,7 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         public ActionResult Index(int? page)
         {
             var category = db.Categories.Select(s => s).OrderBy(s => s.CategoryID);
-            int pageSize = 3;
+            int pageSize = 16;
             int pageNumber = (page ?? 1);
             return View(category.ToPagedList(pageNumber, pageSize));
         }
