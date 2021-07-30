@@ -77,7 +77,7 @@ namespace Nhom3_BookStore.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.Error = "Đăng nhập không thành công!";
+            ViewBag.Error = "Tài khoản hoặc mật khẩu không chính xác!";
             return View();
         }
 
