@@ -312,7 +312,6 @@ C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\bin\System.Web.Webpages.Razo
 C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\bin\System.Web.Helpers.xml
 C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\bin\System.Web.Mvc.xml
 C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.csproj.AssemblyReference.cache
 C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.csproj.CoreCompileInputs.cache
 C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.csproj.CopyComplete
 C:\Users\phamt\OneDrive\Desktop\BTL\Nhom3_BookStore\obj\Debug\Nhom3_BookStore.dll

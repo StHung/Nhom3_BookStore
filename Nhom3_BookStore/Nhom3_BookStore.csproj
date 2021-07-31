@@ -195,6 +195,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAccountsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BillsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BooksController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
@@ -205,7 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\AdminAccount.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookStoreDBContext.cs" />
@@ -265,6 +266,11 @@
     <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAccounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAccounts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAccounts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAccounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAccounts\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

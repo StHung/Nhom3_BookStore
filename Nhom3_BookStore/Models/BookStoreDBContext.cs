@@ -12,7 +12,7 @@ namespace Nhom3_BookStore.Models
         {
         }
 
-        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<AdminAccount> Admins { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
@@ -23,12 +23,12 @@ namespace Nhom3_BookStore.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin>()
+            modelBuilder.Entity<AdminAccount>()
                 .Property(e => e.Username)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Admin>()
+            modelBuilder.Entity<AdminAccount>()
                 .Property(e => e.Password)
                 .IsFixedLength()
                 .IsUnicode(false);

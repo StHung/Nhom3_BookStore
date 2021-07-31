@@ -6,19 +6,27 @@ namespace Nhom3_BookStore.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Admin")]
-    public partial class Admin
+    [Table("AdminAccount")]
+    public partial class AdminAccount
     {
         [Key]
-        [StringLength(150)]
-        public string Email { get; set; }
-
-        [Required]
         [StringLength(30)]
         public string Username { get; set; }
 
         [Required]
         [StringLength(30)]
         public string Password { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string FullName { get; set; }
+
+        [Required]
+        [StringLength(150)]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string PhoneNumber { get; set; }
     }
 }
