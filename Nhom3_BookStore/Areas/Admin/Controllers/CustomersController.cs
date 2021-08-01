@@ -16,11 +16,30 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Admin/Customers
-        public ActionResult Index(string sortOrder, int? page)
+        public ActionResult Index(string sortOrder, int? page, string searchString, string currentFilter)
         {
+            ViewBag.curretnSort = sortOrder;
+
             ViewBag.SortByID = String.IsNullOrEmpty(sortOrder) ? "ma_desc" : "";
-            ViewBag.SortByName = sortOrder == "Name" ? "name_desc" : "name";
+            ViewBag.SortByName = sortOrder == "Name" ? "name_desc" : "Name";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.currentFilter = searchString;
+
             var customer = db.Customers.Select(h => h);
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customer = customer.Where(h => h.CustomerName.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
@@ -38,7 +57,7 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 4;
 
             int pageNumber = (page ?? 1);
 
@@ -60,36 +79,6 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
             return View(customer);
         }
 
-        // GET: Admin/Customers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,CustomerName,Gender,DateOfBirth,PhoneNumber,Email,Address")] Customer customer)
-        {
-            
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Customers.Add(customer);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(customer);
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = "Lỗi nhập dữ liệu! " + ex.Message;
-                return View(customer);
-            }
-        }
 
         // GET: Admin/Customers/Edit/5
         public ActionResult Edit(string id)
@@ -111,7 +100,7 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,CustomerName,Gender,DateOfBirth,PhoneNumber,Email,Address")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerID,CustomerName,Gender,DateOfBirth,PhoneNumber,Email,Address,Password")] Customer customer)
         {
             try
             {

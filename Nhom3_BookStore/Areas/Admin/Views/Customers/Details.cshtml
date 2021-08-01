@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Thông tin người dùng</h2>
+<h2>Thông tin chi tiết người dùng</h2>
 
 <div>
-    <h4>Người dùng</h4>
+    <h4>@Model.CustomerName</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -58,6 +58,7 @@
         <dd>
             @Html.DisplayFor(model => model.Address)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Password)
         </dt>

@@ -15,10 +15,10 @@
         {
             ShoppingCarts = new HashSet<ShoppingCart>();
         }
-
+        [Key]
         [StringLength(20)]
         [DisplayName("Mã khách hàng")]
-        //[Required(ErrorMessage = "Mã khách hàng không được để trống!")]
+        [Required(ErrorMessage = "Mã khách hàng không được để trống!")]
         public string CustomerID { get; set; }
 
         [StringLength(100)]
@@ -57,7 +57,7 @@
 
         [Required(ErrorMessage ="Mật khẩu không được để trống!")]
         [StringLength(50)]
-        [DisplayName("Mật khẩu")]
+        [DisplayName("Mật khẩu đăng nhập")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

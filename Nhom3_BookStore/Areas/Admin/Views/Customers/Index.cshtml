@@ -7,27 +7,36 @@
 }
 
 <h2>Danh sách người dùng</h2>
+@using (Html.BeginForm())
+{
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-sm-5">
+            <div class="col-sm-10">
+                @Html.TextBox("searchString", ViewBag.currentFilter as string, 
+                               htmlAttributes: new { @class = "form-control", @placeholder = "Tìm tên người dùng..." })
 
-<p>
-    @Html.ActionLink("Thêm người dùng", "Create")
-</p>
+            </div>
+            <div class="col-sm-2">
+                <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<p>
+        @Html.ActionLink("Thêm người dùng", "Create")
+    </p>*@
 <table class="table">
     <tr>
         <th>
             @Html.ActionLink("Mã người dùng", "Index",
-                        new { sortOrder = ViewBag.SortByID },
+                        new { sortOrder = ViewBag.SortByID, currentFilter = ViewBag.currentFilter },
                         htmlAttributes: new { style = "color: #676A6D;" })
         </th>
         <th>
             @Html.ActionLink("Tên người dùng", "Index",
-                        new { sortOrder = ViewBag.SortByName },
+                        new { sortOrder = ViewBag.SortByName, currentFilter = ViewBag.currentFilter },
                         htmlAttributes: new { style = "color: #676A6D;" })
-        </th>
-        <th>
-            Giới tính
-        </th>
-        <th>
-            Ngày sinh
         </th>
         <th>
             Số điện thoại
@@ -38,20 +47,17 @@
         <th>
             Địa chỉ
         </th>
-        <th></th>
+        <th>Thao tác</th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CustomerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
@@ -71,3 +77,8 @@
     }
 
 </table>
+<br />
+
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
