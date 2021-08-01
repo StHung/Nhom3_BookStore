@@ -267,9 +267,9 @@
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminAccounts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

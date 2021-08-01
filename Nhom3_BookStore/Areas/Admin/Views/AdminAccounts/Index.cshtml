@@ -5,48 +5,54 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh sách tài khoản Admin</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            Tên tài khoản
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            Mật khẩu
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            Họ tên
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Email
+        </th>
+        <th>
+            Số điện thoại
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Username }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Username }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Username })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.Username.Trim() }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.Username.Trim() })
+            </td>
+        </tr>
+    }
 
 </table>
