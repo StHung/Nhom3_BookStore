@@ -27,7 +27,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-                <a href="#">
+                <a href="@Url.Action("Index", "Home")">
                     <img src="~/Areas/Admin/assets/img/BookStoreLogo.png" alt="Bookstore Logo" class="img-responsive logo">
                 </a>
             </div>
@@ -49,14 +49,14 @@
                                     <i class="icon-submenu lnr lnr-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Logout", "AdminAccounts")"><i class="lnr lnr-exit"></i> <span>Đăng Xuất</span></a></li>
+                                    <li><a href="@Url.Action("Logout", "Home")"><i class="lnr lnr-exit"></i> <span>Đăng Xuất</span></a></li>
                                 </ul>
                             </li>
                         }
                         else
                         {
                             <li>
-                                <a class="navbar-link" href="@Url.Action("Login","AdminAccounts")">
+                                <a class="navbar-link" href="@Url.Action("Login","Home")">
                                     <span>Đăng nhập</span>
                                 </a>
                             </li>
