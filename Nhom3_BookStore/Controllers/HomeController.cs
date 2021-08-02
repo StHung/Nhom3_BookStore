@@ -71,9 +71,10 @@ namespace Nhom3_BookStore.Controllers
                 var user = db.Customers.Where(u => u.Email.Equals(email) && u.Password.Equals(password)).ToList();
                 if (user.Count > 0)
                 {
-                    Session["CustomerName"] = user.FirstOrDefault().CustomerName;
-                    Session["Password"] = user.FirstOrDefault().Password;
                     Session["CustomerID"] = user.FirstOrDefault().CustomerID;
+                    Session["CustomerName"] = user.FirstOrDefault().CustomerName;
+                    Session["Email"] = user.FirstOrDefault().Email;
+                    Session["Password"] = user.FirstOrDefault().Password;
 
                     //create shopping cart
                     ShoppingCart currentCart = db.ShoppingCarts.ToList().LastOrDefault();
@@ -112,6 +113,21 @@ namespace Nhom3_BookStore.Controllers
         public ActionResult ViewAccountInfo(string userid)
         {
             Customer customer = db.Customers.Find(userid);
+            return View(customer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAccountInfo([Bind(Include = "CustomerID,CustomerName,Gender,DateOfBirth,PhoneNumber,Email,Address,Password,Lock")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                //Session.Remove("CustomerName");
+                //Session["CustomerName"] = customer.CustomerName;
+                db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Logout");
+            }
             return View(customer);
         }
 
