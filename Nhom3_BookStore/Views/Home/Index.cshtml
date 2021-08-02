@@ -91,14 +91,16 @@
                                         @{
                                             string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
                                         }
-                                        <a href="@Url.Action("Details", "Home", new { id = item.BookID.Trim()})">
+                                        <a href="@Url.Action("Details", "Home", new { id = item.BookID.Trim() })">
                                             <img src="@Url.Content(ImagePath)" height="250" alt="bìa sách" />
                                         </a>
                                         <h2>@Html.DisplayFor(modelItem => item.Price).ToString() VNĐ</h2>
                                         <div style="height:60px;">
                                             <p>@Html.DisplayFor(modelItem => item.Tittle)</p>
                                         </div>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                        <a href="@Url.Action("AddToCart", "Home", new { bookid = item.BookID.Trim()})" class="btn btn-default add-to-cart">
+                                            <i class="fa fa-shopping-cart"></i>Thêm vào giỏ
+                                        </a>
                                     </div>
                                 </div>
                             </div>

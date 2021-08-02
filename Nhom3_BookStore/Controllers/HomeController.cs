@@ -12,7 +12,6 @@ namespace Nhom3_BookStore.Controllers
     {
         BookStoreDBContext db = new BookStoreDBContext();
         // GET: Home
-
         public ActionResult Index(string id, string searchString, int? page)
         {
             List<Book> books = new List<Book>();
@@ -73,7 +72,35 @@ namespace Nhom3_BookStore.Controllers
                 {
                     Session["CustomerName"] = user.FirstOrDefault().CustomerName;
                     Session["Password"] = user.FirstOrDefault().Password;
-                    Session["AccountID"] = user.FirstOrDefault().CustomerID;
+                    Session["CustomerID"] = user.FirstOrDefault().CustomerID;
+
+                    //create shopping cart
+                    ShoppingCart currentCart = db.ShoppingCarts.ToList().LastOrDefault();
+                    if(db.Bills.Where( b => b.CartID.Equals(currentCart.CartID)).ToList().Count > 0 || currentCart == null)
+                    {
+                        //make random cart id
+                        bool isValid = false;
+                        ShoppingCart shoppingCart = new ShoppingCart();
+                        while (isValid == false)
+                        {
+                            Random rand = new Random();
+                            string id = "C" + rand.Next(0, 9999).ToString("0000");
+                            if (db.ShoppingCarts.Where(c => c.CartID.Equals(id)).ToList().Count == 0)
+                            {
+                                shoppingCart.CartID = id;
+                                shoppingCart.CustomerID = user.FirstOrDefault().CustomerID;
+                                Session["cartid"] = id;
+                                db.ShoppingCarts.Add(shoppingCart);
+                                db.SaveChanges();
+                                isValid = true;
+                            }
+                        }
+                    }
+                    else if(currentCart != null)
+                    {
+                        Session["cartid"] = currentCart.CartID;
+                    }
+
                     return RedirectToAction("Index");
                 }
             }
@@ -123,6 +150,27 @@ namespace Nhom3_BookStore.Controllers
             return View(customer);
         }
 
+        public ActionResult AddToCart(string bookid)
+        {
+            string cartid = db.ShoppingCarts.ToList().LastOrDefault().CartID;
+
+            if (cartid == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            CartDetail cartDetail = new CartDetail();
+            cartDetail.CartID = cartid;
+            cartDetail.BookID = bookid;
+            cartDetail.Amount = 1;
+
+            db.CartDetails.Add(cartDetail);
+            db.SaveChanges();
+
+            return View("Index");
+        }
+
+
         [ChildActionOnly]
         public ActionResult _Sidebar()
         {
@@ -133,6 +181,11 @@ namespace Nhom3_BookStore.Controllers
         public PartialViewResult _Search()
         {
             return PartialView();
+        }
+
+        public void RandomShoppingCart()
+        {
+
         }
     }
 }
