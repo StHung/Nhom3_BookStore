@@ -204,7 +204,7 @@ namespace Nhom3_BookStore.Controllers
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction("ViewCart");
+            return RedirectToAction("Index");
         }
 
         public ActionResult RemoveBookInCart(string cartid, string bookid)

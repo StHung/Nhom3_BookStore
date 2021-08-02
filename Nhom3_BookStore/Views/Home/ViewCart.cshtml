@@ -8,7 +8,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="@Url.Action("Index", "Home", new { id = ""})">Trang chủ</a></li>
+                <li><a href="@Url.Action("Index", "Home", new { id = "" })">Trang chủ</a></li>
                 <li class="active">Thanh toán</li>
             </ol>
         </div><!--/breadcrums-->
@@ -28,7 +28,7 @@
                         <td class="description"></td>
                         <td class="price">Giá</td>
                         <td class="quantity">Số lượng</td>
-                        <td class="total">Tổng tiền</td>
+                        <td class="total">Thành tiền</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -37,10 +37,10 @@
                     {
                         <tr>
                             <td class="cart_product">
-                                @{ 
+                                @{
                                     string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Book.Images;
                                 }
-                                <a href="@Url.Action("Details", new { id = item.BookID.Trim()})">
+                                <a href="@Url.Action("Details", new { id = item.BookID.Trim() })">
                                     <img class="checkout_crop" src="@Url.Content(ImagePath)" alt="anh bia sach">
                                 </a>
                             </td>
@@ -52,44 +52,35 @@
                                 <p>@item.Book.Price VNĐ</p>
                             </td>
                             <td class="cart_quantity">
-                                @*<div class="cart_quantity_button">
+                                <div class="cart_quantity_button">
                                     <a class="cart_quantity_up" href=""> - </a>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                                    <input class="cart_quantity_input" type="text" name="quantity" value="@item.Amount" autocomplete="off" size="2">
                                     <a class="cart_quantity_down" href=""> + </a>
-                                </div>*@
-                                @item.Amount
+                                </div>
                             </td>
                             <td class="cart_total">
                                 <p class="cart_total_price">
-                                    @{ 
+                                    @{
                                         decimal money = (decimal)(item.Amount * item.Book.Price);
                                         totalMoney += money;
                                     }
-                                    @money VNĐ
+                                    @string.Format("{0:#,###}", @money) VNĐ
                                 </p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="@Url.Action("RemoveBookInCart", "Home", new { cartid = item.CartID.Trim(), bookid = item.BookID.Trim()})">
+                                <a class="cart_quantity_delete" href="@Url.Action("RemoveBookInCart", "Home", new { cartid = item.CartID.Trim(), bookid = item.BookID.Trim() })">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
                         </tr>
 
-                    }
-                    <tr>
-                        <td colspan="4">&nbsp;</td>
-                        <td colspan="2">
-                            <table class="table table-condensed total-result">
-                                <tr>
-                                    <td>Tổng tiền</td>
-                                    <td><span>@totalMoney VNĐ</span></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                                        }
                 </tbody>
             </table>
         </div>
+        <h3 class="pull-right">
+            Tổng tiền: <span style="color: #fe980f; margin-right: 70px;">@string.Format("{0:#,###}", @totalMoney) VNĐ</span>
+        </h3>
         <hr />
         <div class="payment-options">
             <div class="review-payment">
