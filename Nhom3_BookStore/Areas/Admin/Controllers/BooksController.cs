@@ -40,7 +40,7 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
                     books = books.OrderByDescending(b => b.BookID);
                     break;
                 default:
-                    books = books.OrderBy(b =>b.BookID);
+                    books = books.OrderBy(b => b.BookID);
                     break;
             }
 
@@ -185,9 +185,17 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Book book = db.Books.Find(id);
-            db.Books.Remove(book);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Books.Remove(book);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Không thể xóa bản ghi này!" + ex.Message;
+                return View(book);
+            }
         }
 
         protected override void Dispose(bool disposing)

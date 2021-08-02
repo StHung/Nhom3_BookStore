@@ -244,16 +244,13 @@
     <Content Include="Areas\Admin\assets\vendor\linearicons\fonts\Linearicons-Free.woff2" />
     <Content Include="Areas\Admin\Views\Books\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Books\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Books\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Bills\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Customers\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Customers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Publishers\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Publishers\Delete.cshtml" />
@@ -270,6 +267,8 @@
     <Content Include="Areas\Admin\Views\AdminAccounts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminAccounts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Books\Details.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -277,9 +276,10 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ViewCart.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\ViewAccountInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

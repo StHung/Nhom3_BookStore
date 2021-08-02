@@ -109,6 +109,12 @@ namespace Nhom3_BookStore.Controllers
             return View();
         }
 
+        public ActionResult ViewAccountInfo(string userid)
+        {
+            Customer customer = db.Customers.Find(userid);
+            return View(customer);
+        }
+
         public ActionResult Logout()
         {
             Session.Clear();
@@ -143,6 +149,8 @@ namespace Nhom3_BookStore.Controllers
                         isOK = true;
                     }
                 }
+
+                customer.Lock = false;
 
                 db.Customers.Add(customer);
                 db.SaveChanges();
@@ -180,7 +188,7 @@ namespace Nhom3_BookStore.Controllers
                     db.SaveChanges();
                 }
             }
-            return View("ViewCart");
+            return RedirectToAction("ViewCart");
         }
 
         public ActionResult RemoveBookInCart(string cartid, string bookid)
