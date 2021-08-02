@@ -48,10 +48,10 @@
                         <h3>
                             <b>Giá: @Html.DisplayFor(model => model.Price) VNĐ</b>
                         </h3>
-                        <button type="button" class="btn btn-fefault cart" style="margin-left: 0px;">
+                        <a href="@Url.Action("AddToCart", "Home", new { bookid = Model.BookID.Trim()})" class="btn btn-fefault cart" style="margin-left: 0px;">
                             <i class="fa fa-shopping-cart"></i>
                             Thêm vào giỏ
-                        </button>
+                        </a>
                     </div><!--/product-information-->
                 </div>
             </div><!--/product-details-->
