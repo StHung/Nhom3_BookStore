@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>BookStore</title>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
     <link href="~/wwwroot/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/wwwroot/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/wwwroot/css/prettyPhoto.css" rel="stylesheet">
@@ -154,12 +155,13 @@
         </div>
 
     </footer><!--/Footer-->
-
+    <script src="~/Scripts/toastr.js"></script>
     <script src="~/wwwroot/js/jquery.js"></script>
     <script src="~/wwwroot/js/bootstrap.min.js"></script>
     <script src="~/wwwroot/js/jquery.scrollUp.min.js"></script>
     <script src="~/wwwroot/js/price-range.js"></script>
     <script src="~/wwwroot/js/jquery.prettyPhoto.js"></script>
     <script src="~/wwwroot/js/main.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

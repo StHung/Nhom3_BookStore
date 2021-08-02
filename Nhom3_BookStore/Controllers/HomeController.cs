@@ -122,11 +122,11 @@ namespace Nhom3_BookStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Session.Remove("CustomerName");
-                //Session["CustomerName"] = customer.CustomerName;
+                Session.Remove("CustomerName");
+                Session["CustomerName"] = customer.CustomerName;
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Logout");
+                return RedirectToAction("Index");
             }
             return View(customer);
         }
@@ -144,7 +144,7 @@ namespace Nhom3_BookStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "CustomerName,Gender,DateOfBirth,PhoneNumber,Email,Address,Password")] Customer customer)
+        public ActionResult Register([Bind(Include = "CustomerName,Gender,DateOfBirth,PhoneNumber,Email,Address,Password,Lock")] Customer customer)
         {
             if (db.Customers.Where(c => c.Email.Equals(customer.Email)).ToList().Count > 0)
             {

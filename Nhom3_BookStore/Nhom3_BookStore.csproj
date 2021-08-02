@@ -155,7 +155,16 @@
     <Content Include="Areas\Admin\assets\vendor\toastr\toastr.min.css" />
     <Content Include="Areas\Admin\assets\vendor\toastr\toastr.min.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <None Include="Scripts\jquery-1.6.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.3.js" />
+    <Content Include="Scripts\jquery-1.6.3.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="wwwroot\css\animate.css" />
     <Content Include="wwwroot\css\bootstrap.min.css" />

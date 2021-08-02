@@ -72,11 +72,11 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.CheckBoxFor(modelItem => item.Lock)
+                @Html.DisplayFor(modelItem => item.Lock)
             </td>
             <td>
                 @Html.ActionLink("Sửa trạng thái", "Edit", new { id = item.CustomerID }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.CustomerID }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.CustomerID })
             </td>
         </tr>
     }
