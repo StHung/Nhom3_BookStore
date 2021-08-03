@@ -15,34 +15,61 @@ namespace Nhom3_BookStore.Controllers
         // GET: Shopping
         public ActionResult AddToCart(string bookid)
         {
-            string cartid = db.ShoppingCarts.ToList().LastOrDefault().CartID;
-
-            if (cartid == null || db.Bills.Where(b => b.CartID.Equals(cartid)).ToList().Count > 0)
+            if (Session["CustomerID"] == null)
             {
                 return RedirectToAction("Login", "User");
             }
+            string customerid = Session["CustomerID"].ToString();
+            var curCart = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList()
+                                            .LastOrDefault();
+
+            if (curCart == null || db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0)
+            {
+                //make random cart id
+                bool isValid = false;
+                ShoppingCart shoppingCart = new ShoppingCart();
+                while (isValid == false)
+                {
+                    Random rand = new Random();
+                    string id = "C" + rand.Next(0, 9999).ToString("0000");
+                    if (db.ShoppingCarts.Where(c => c.CartID.Equals(id)).ToList().Count == 0)
+                    {
+                        shoppingCart.CartID = id;
+                        shoppingCart.CustomerID = Session["CustomerID"].ToString();
+                        Session["cartid"] = id;
+                        db.ShoppingCarts.Add(shoppingCart);
+                        db.SaveChanges();
+                        isValid = true;
+                    }
+                }
+
+            }
+            else if(curCart.CartID != null)
+            {
+                Session["cartid"] = curCart.CartID;
+            }
+
+            string cartid = Session["cartid"].ToString();
+            CartDetail records = db.CartDetails.Where(c => c.CartID.Equals(cartid) && c.BookID.Equals(bookid))
+                                                .ToList().FirstOrDefault();
+            if (records != null)
+            {
+                records.Amount += 1;
+                db.Entry(records).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             else
             {
-                CartDetail records = db.CartDetails.Where(c => c.CartID.Equals(cartid) && c.BookID.Equals(bookid))
-                                                    .ToList().FirstOrDefault();
-                if (records != null)
-                {
-                    records.Amount += 1;
-                    db.Entry(records).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                else
-                {
-                    CartDetail cartDetail = new CartDetail();
-                    cartDetail.CartID = cartid;
-                    cartDetail.BookID = bookid;
-                    cartDetail.Amount = 1;
+                CartDetail cartDetail = new CartDetail();
+                cartDetail.CartID = Session["cartid"].ToString();
+                cartDetail.BookID = bookid;
+                cartDetail.Amount = 1;
 
-                    db.CartDetails.Add(cartDetail);
-                    db.SaveChanges();
-                }
+                db.CartDetails.Add(cartDetail);
+                db.SaveChanges();
             }
-            return RedirectToAction("Index", "Home");
+
+            return RedirectToAction("ViewCart");
         }
 
         public ActionResult RemoveBookInCart(string cartid, string bookid)
@@ -50,27 +77,34 @@ namespace Nhom3_BookStore.Controllers
             CartDetail record = db.CartDetails.Where(c => c.CartID.Equals(cartid) &&
                                                               c.BookID.Equals(bookid)).
                                                    ToList().FirstOrDefault();
-
             db.CartDetails.Remove(record);
-            db.SaveChanges();
+            db.SaveChanges();            
             return RedirectToAction("ViewCart");
         }
 
         public ActionResult ViewCart()
         {
-            string cartid = db.ShoppingCarts.ToList().LastOrDefault().CartID;
-
-            if (cartid == null || db.Bills.Where(b => b.CartID.Equals(cartid)).ToList().Count > 0)
+            List<CartDetail> cartDetails = new List<CartDetail>();
+            if (Session["CustomerID"] == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "User");
             }
+            string customerid = Session["CustomerID"].ToString();
+            var curCart = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList()
+                                            .LastOrDefault();
 
-            var cartDetails = db.CartDetails.Where(c => c.CartID.Equals(cartid)).ToList();
-            if (cartDetails.Count == 0)
+            if (curCart == null || db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0)
             {
                 ViewBag.Message = "Giỏ hàng trống";
             }
-
+            else
+            {
+                cartDetails = db.CartDetails.Where(c => c.CartID.Equals(curCart.CartID)).ToList();
+                if (cartDetails.Count == 0 || cartDetails == null)
+                {
+                    ViewBag.Message = "Giỏ hàng trống";
+                }
+            }
             return View(cartDetails);
         }
 

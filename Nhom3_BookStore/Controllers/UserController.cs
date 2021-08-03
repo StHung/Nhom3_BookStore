@@ -32,33 +32,6 @@ namespace Nhom3_BookStore.Controllers
                     Session["Email"] = user.FirstOrDefault().Email;
                     Session["Password"] = user.FirstOrDefault().Password;
 
-                    //create shopping cart
-                    ShoppingCart currentCart = db.ShoppingCarts.ToList().LastOrDefault();
-                    if (db.Bills.Where(b => b.CartID.Equals(currentCart.CartID)).ToList().Count > 0 || currentCart == null)
-                    {
-                        //make random cart id
-                        bool isValid = false;
-                        ShoppingCart shoppingCart = new ShoppingCart();
-                        while (isValid == false)
-                        {
-                            Random rand = new Random();
-                            string id = "C" + rand.Next(0, 9999).ToString("0000");
-                            if (db.ShoppingCarts.Where(c => c.CartID.Equals(id)).ToList().Count == 0)
-                            {
-                                shoppingCart.CartID = id;
-                                shoppingCart.CustomerID = user.FirstOrDefault().CustomerID;
-                                Session["cartid"] = id;
-                                db.ShoppingCarts.Add(shoppingCart);
-                                db.SaveChanges();
-                                isValid = true;
-                            }
-                        }
-                    }
-                    else if (currentCart != null)
-                    {
-                        Session["cartid"] = currentCart.CartID;
-                    }
-
                     return RedirectToAction("Index", "Home");
                 }
             }

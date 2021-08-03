@@ -90,6 +90,7 @@
                                     <div class="productinfo text-center">
                                         @{
                                             string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
+                                           
                                         }
                                         <a href="@Url.Action("Details", "Home", new { id = item.BookID.Trim() })">
                                             <img src="@Url.Content(ImagePath)" height="250" alt="bìa sách" />
@@ -98,7 +99,7 @@
                                         <div style="height:60px;">
                                             <p>@Html.DisplayFor(modelItem => item.Tittle)</p>
                                         </div>
-                                        <a onclick="showMessage()" href="@Url.Action("AddToCart", "Home", new { bookid = item.BookID.Trim()})" class="btn btn-default add-to-cart">
+                                        <a onclick="showMessage()" href="@Url.Action("AddToCart", "Shopping", new { bookid = item.BookID.Trim()})" class="btn btn-default add-to-cart">
                                             <i class="fa fa-shopping-cart"></i>Thêm vào giỏ
                                         </a>
                                     </div>
