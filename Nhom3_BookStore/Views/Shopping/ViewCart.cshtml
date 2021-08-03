@@ -40,7 +40,7 @@
                                 @{
                                     string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Book.Images;
                                 }
-                                <a href="@Url.Action("Details", new { id = item.BookID.Trim() })">
+                                <a href="@Url.Action("Details", "Home", new { id = item.BookID.Trim() })">
                                     <img class="checkout_crop" src="@Url.Content(ImagePath)" alt="anh bia sach">
                                 </a>
                             </td>
@@ -68,13 +68,13 @@
                                 </p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="@Url.Action("RemoveBookInCart", "Home", new { cartid = item.CartID.Trim(), bookid = item.BookID.Trim() })">
+                                <a class="cart_quantity_delete" href="@Url.Action("RemoveBookInCart", "Shopping", new { cartid = item.CartID.Trim(), bookid = item.BookID.Trim() })">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </td>
                         </tr>
 
-                                        }
+                    }
                 </tbody>
             </table>
         </div>

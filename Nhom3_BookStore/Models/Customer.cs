@@ -32,7 +32,7 @@
         public string Gender { get; set; }
 
         [DisplayName("Ngày sinh")]
-        //[Required(ErrorMessage = "Ngày sinh không được để trống!")]
+        [Required(ErrorMessage = "Ngày sinh không được để trống!")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
