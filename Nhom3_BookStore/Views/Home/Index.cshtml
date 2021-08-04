@@ -99,7 +99,7 @@
                                         <div style="height:60px;">
                                             <p>@Html.DisplayFor(modelItem => item.Tittle)</p>
                                         </div>
-                                        <a onclick="showMessage()" href="@Url.Action("AddToCart", "Shopping", new { bookid = item.BookID.Trim()})" class="btn btn-default add-to-cart">
+                                        <a href="@Url.Action("AddToCart", "Shopping", new { bookid = item.BookID.Trim()})" class="btn btn-default add-to-cart">
                                             <i class="fa fa-shopping-cart"></i>Thêm vào giỏ
                                         </a>
                                     </div>
@@ -118,8 +118,3 @@
     </div>
 </section>
 <br />
-<script type="text/javascript">
-    function showMessage() {
-        alert("Bạn vừa thêm một sản phẩm vào giỏ hàng!");
-    }
-</script>

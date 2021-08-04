@@ -13,18 +13,16 @@
         [Key]
         [StringLength(20)]
         [DisplayName("Mã Hóa đơn")]
-        [Required(ErrorMessage = "Không được để trống Mã Hóa đơn")]
         public string BillNo { get; set; }
 
-        [DisplayName("Mã Thẻ")]
-        [Required(ErrorMessage = "Không được để trống Mã Thẻ")]
+        [DisplayName("Mã giỏ hàng")]
         [StringLength(20)]
         public string CartID { get; set; }
 
         [DisplayName("Ngày Thanh toán"), DataType(DataType.Date)]
         public DateTime? PurchaseDate { get; set; }
 
-        [DisplayName("PT vận chuyển")]
+        [DisplayName("Đơn vị vân chuyển")]
         [StringLength(100)]
         public string DeliveryMethod { get; set; }
 

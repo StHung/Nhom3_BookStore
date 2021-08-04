@@ -291,6 +291,8 @@
     <Content Include="Views\User\ViewAccountInfo.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Shopping\ViewCart.cshtml" />
+    <Content Include="Views\Shopping\Checkout.cshtml" />
+    <Content Include="Views\Shopping\AccomplishedView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -21,30 +21,35 @@
         <th>
             @Html.DisplayNameFor(model => model.DeliveryAddress)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryState)
+        </th>
+        <th>Thao tác</th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BillNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryMethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryAddress)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.BillNo.Trim() }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.BillNo.Trim() }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.BillNo.Trim() })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BillNo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeliveryMethod)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PaymentMethod)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeliveryAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeliveryState)
+    </td>
+    <td>
+        @Html.ActionLink("Cập nhập trạng thái", "Edit", new { id = item.BillNo.Trim() }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.BillNo.Trim() })
+    </td>
+</tr>
     }
 
 </table>

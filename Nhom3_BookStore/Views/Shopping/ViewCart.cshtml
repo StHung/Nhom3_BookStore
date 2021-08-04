@@ -84,27 +84,27 @@
             </h3>
             <hr />
             <div class="payment-options">
-                <div class="review-payment">
-                    <h2>Hình thức thanh toán</h2>
-                    <span>
-                        <label><input type="radio"> Chuyển khoản trực tiếp</label>
-                    </span>
-                    <span>
-                        <label><input type="radio"> Thanh toán khi nhận hàng</label>
-                    </span>
-                </div>
                 <div class="row">
                     <div class="col-sm-10">
                     </div>
                     <div class="col-sm-2">
-                        <a class="btn btn-primary float-right" href="complete-checkout.html">Xác nhận thanh toán</a>
+                        <a class="btn btn-primary float-right" href="@Url.Action("Checkout", "Shopping")">
+                            Tiến hành đặt hàng
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <a href="@Url.Action("Index", "Home")" class="btn btn-default pull-right" style="margin-top:-100px; margin-right:10px;">
-                Mua tiếp
-            </a>
+            <div class="payment-options" style="margin-top: -150px;">
+                <div class="row">
+                    <div class="col-sm-10">
+                    </div>
+                    <div class="col-sm-2">
+                        <a class="btn btn-primary float-right" href="@Url.Action("Index", "Home")">
+                            Tiếp tục mua sắm
+                        </a>
+                    </div>
+                </div>
+            </div>
             <br />
         }
         else

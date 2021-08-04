@@ -1,0 +1,56 @@
+﻿@model Nhom3_BookStore.Models.Bill
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="payment-options">
+                <br />
+                <h2 style="color:#fe980f;">
+                    Chọn đơn vị vận chuyển và phương thức thanh toán
+                </h2>
+                <hr />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        @Html.HiddenFor(model => model.BillNo)
+                        @Html.HiddenFor(model => model.CartID)
+                        @Html.HiddenFor(model => model.PurchaseDate)
+                        @Html.HiddenFor(model => model.DeliveryAddress)
+                        @Html.HiddenFor(model => model.DeliveryState)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DeliveryMethod, htmlAttributes: new { @class = "control-label col-md-6" })
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.DeliveryMethod, new SelectList(new string[] {"Giao hàng nhanh (GHN)", "Giao hàng tiết kiệm (GHTK"}), 
+                                                        new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DeliveryMethod, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label col-md-6" })
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.PaymentMethod, new SelectList(new string[] {"Thanh toán khi nhận hàng"}) ,new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-8 col-md-4">
+                                <input type="submit" value="Đặt hàng" class="btn btn-default" style="background-color:#fe980f; color: #fff;"/>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

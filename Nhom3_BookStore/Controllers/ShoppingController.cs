@@ -107,6 +107,56 @@ namespace Nhom3_BookStore.Controllers
             }
             return View(cartDetails);
         }
+        public ActionResult Checkout()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Checkout([Bind(Include = "BillNo,CartID,PurchaseDate,DeliveryMethod,PaymentMethod,DeliveryAddress,DeliveryState")] Bill bill)
+        {
+            if (ModelState.IsValid)
+            {
+                bool isValid = false;
+                while (isValid == false)
+                {
+                    Random rand = new Random();
+                    string billid = "HD" + rand.Next(0, 9999).ToString("0000");
+                    if (db.Bills.Where(c => c.BillNo.Equals(billid)).ToList().Count == 0)
+                    {
+                        bill.BillNo = billid;
+                        isValid = true;
+                    }
+                }
+
+                string customerid = "";
+
+                if(Session["CustomerID"] != null)
+                {
+                    customerid = Session["CustomerID"].ToString();
+                    string address = db.Customers.Where(u => u.CustomerID.Equals(customerid)).FirstOrDefault().Address;
+                    bill.DeliveryAddress = address;
+                }
+
+                bill.CartID = db.ShoppingCarts.Where( s => s.CustomerID.Equals(customerid))
+                                              .ToList().LastOrDefault().CartID;
+
+
+                bill.PurchaseDate = DateTime.Now;
+                bill.DeliveryState = "Đang giao";
+
+                db.Bills.Add(bill);
+                db.SaveChanges();
+                return RedirectToAction("AccomplishedView");
+            }
+
+            return View(bill);
+        }
+
+        public ActionResult AccomplishedView()
+        {
+            return View();
+        }
     }
 }
