@@ -158,5 +158,37 @@ namespace Nhom3_BookStore.Controllers
         {
             return View();
         }
+
+        public ActionResult ViewMyOrders()
+        {
+            List<Bill> myBills = new List<Bill>();
+            if(Session["CustomerID"] != null)
+            {
+                string customerid = Session["CustomerID"].ToString();
+                myBills = db.Bills.Where( b => b.ShoppingCart.CustomerID.Equals(customerid)
+                                                && b.DeliveryState.Equals("Đang giao")).ToList();
+            }
+
+            if(myBills.Count == 0)
+            {
+                ViewBag.Message = "Không có đơn hàng đang giao nào!";
+            }
+
+            return View(myBills);
+        }
+
+        public ActionResult ViewOrderDetails(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bill bill = db.Bills.Find(id);
+            if (bill == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bill);
+        }
     }
 }

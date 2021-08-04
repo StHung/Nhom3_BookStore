@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Nhom3_BookStore.Models.Bill>
+
+@{
+    ViewBag.Title = "ViewMyOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <h3 style="color:#fe980f;">
+        Danh sách đơn hàng đang giao đến bạn
+    </h3>
+    <br />
+    @if (@ViewBag.Message == null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BillNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchaseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryMethod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryState)
+                </th>
+                <th>
+                    Thao tác
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShoppingCart.CustomerID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeliveryMethod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeliveryState)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Xem chi tiết đơn hàng này", "ViewOrderDetails", new { id = item.BillNo })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <h3>
+                @ViewBag.Message
+            </h3>
+        </div>
+    }
+</div>
+<div style="margin-top: 130px;">
+</div>

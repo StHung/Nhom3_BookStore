@@ -6,7 +6,7 @@
     decimal totalMoney = 0;
 }
 
-<h2>Chi tiết hóa đơn</h2>
+<h2>Chi tiết đơn hàng</h2>
 
 <div>
     <h3>Mã đơn hàng: @Model.BillNo - Ngày lập: @Model.PurchaseDate.Value.ToShortDateString()</h3>
@@ -28,28 +28,28 @@
                 <th>Tiêu đề</th>
                 <th>Số lượng</th>
                 <th>Giá</th>
-                <th>Thành tiền</th>
+                <th>Tạm tính</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.ShoppingCart.CartDetails.ToList())
             {
-                <tr>
-                    @{
-                        decimal money = (decimal)(item.Book.Price * item.Amount);
-                        totalMoney += money;
-                    }
-                    <td>@item.Book.Tittle</td>
-                    <td>@item.Amount</td>
-                    <td>@item.Book.Price</td>
-                    <td>@money</td>
-                </tr>
+            <tr>
+                @{
+                    decimal money = (decimal)(item.Book.Price * item.Amount);
+                    totalMoney += money;
+                }
+                <td>@item.Book.Tittle</td>
+                <td>@item.Amount</td>
+                <td>@string.Format("{0: #,### VNĐ}", item.Book.Price)</td>
+                <td>@string.Format("{0: #,### VNĐ}", money)</td>
+            </tr>
             }
             <tr>
                 <td></td>
                 <td></td>
-                <td>Tổng tiền</td>
-                <td>@totalMoney</td>
+                <td>Thành tiền</td>
+                <td>@totalMoney.ToString("#,### VNĐ")</td>
             </tr>
         </tbody>
     </table>

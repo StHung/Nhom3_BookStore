@@ -12,7 +12,7 @@
     {
         [Key]
         [StringLength(20)]
-        [DisplayName("Mã Hóa đơn")]
+        [DisplayName("Mã đơn hàng")]
         public string BillNo { get; set; }
 
         [DisplayName("Mã giỏ hàng")]

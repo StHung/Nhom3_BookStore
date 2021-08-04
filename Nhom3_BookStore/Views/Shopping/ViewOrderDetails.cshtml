@@ -1,0 +1,75 @@
+﻿@model Nhom3_BookStore.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal totalMoney = 0;
+}
+
+<div class="container">
+    <h2>Chi tiết đơn hàng</h2>
+
+    <div>
+        <h3>Mã đơn hàng: @Model.BillNo - Ngày lập: @Model.PurchaseDate.Value.ToShortDateString()</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <p><b>Tên khách hàng:</b> @Model.ShoppingCart.Customer.CustomerName</p>
+                <p><b>Địa chỉ giao hàng:</b> @Model.DeliveryAddress</p>
+                <p><b>Phương thức vận chuyển:</b> @Model.DeliveryMethod</p>
+                <p><b>Phương thức thanh toán:</b> @Model.PaymentMethod</p>
+                <p><b>Trạng thái đơn hàng:</b> @Model.DeliveryState</p>
+            </div>
+        </div>
+        <h3>
+            Danh sách mặt hàng
+        </h3>
+        <table class="table table-light table-bordered">
+            <thead style="background-color: #0f1012; color: #fff;">
+                <tr>
+                    <th>Sách đã đặt</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Tạm tính</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ShoppingCart.CartDetails.ToList())
+                {
+                    <tr>
+                        @{
+                            decimal money = (decimal)(item.Book.Price * item.Amount);
+                            totalMoney += money;
+                        }
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    @{
+                                        string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Book.Images;
+                                    }
+                                    <img src="@Url.Content(ImagePath)" width="100" alt="Ảnh bìa" />
+                                </div>
+                                <div class="col-sm-10">
+                                    <h3 style="vertical-align:middle;">
+                                        @item.Book.Tittle
+                                    </h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@item.Amount</td>
+                        <td>@string.Format("{0: #,### VNĐ}", item.Book.Price)</td>
+                        <td>@string.Format("{0: #,### VNĐ}", money)</td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Thành tiền</td>
+                    <td>@totalMoney.ToString("#,### VNĐ")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="pull-right">
+        @Html.ActionLink("Quay lại", "Index")
+    </p>
+</div>

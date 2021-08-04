@@ -23,7 +23,7 @@
             <!--header_top-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6 ">
+                    <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
                                 <li><a href=""><i class="fa fa-phone"></i> 0913264598</a></li>
@@ -50,21 +50,27 @@
             <!--header-middle-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="shop-menu pull-left">
                             <ul class="nav navbar-nav">
-                                <li><a href="@Url.Action("Index", "Home", new { id = ""})">LOGO BOOKSTORE</a></li>
-                                <li><a href="@Url.Action("Index", "Home", new { id = ""})">Trang chủ</a></li>
-                                <li><a href="@Url.Action("Contact", "Home")">Liên hệ</a></li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Home", new { id = ""})">BOOKSTORE</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Home", new { id = ""})">Trang chủ</a>
+                                </li>
+                                @*<li>
+                                    <a href="@Url.Action("Contact", "Home")">Liên hệ</a>
+                                </li>*@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         @{
                             Html.RenderAction("_Search", "Home");
                         }
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 @if (Session["CustomerName"] != null)
@@ -75,6 +81,12 @@
                                     <li>
                                         <a href="@Url.Action("Logout", "User")"><i class="fa fa-sign-out"></i>Đăng xuất</a>
                                     </li>
+                                    <li>
+                                        <a href="@Url.Action("ViewMyOrders", "Shopping")">
+                                            <i class="fa fa-clock-o"></i> Đơn hàng
+                                        </a>
+                                    </li>
+
                                 }
                                 else
                                 {
@@ -106,7 +118,7 @@
                             <h2>Chăm sóc khách hàng</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Trợ giúp</a></li>
-                                <li><a href="#">Liên hệ</a></li>
+                                <li><a href="@Url.Action("Contact", "Home")">Liên hệ</a></li>
                                 <li><a href="#">Hỏi đáp</a></li>
                             </ul>
                         </div>
