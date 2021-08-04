@@ -15,12 +15,31 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Admin/Books
-        public ActionResult Index(string sortOrder, int? page)
+        public ActionResult Index(string sortOrder, int? page, string searchString, string currentFilter)
         {
+            ViewBag.curretnSort = sortOrder;
+
             ViewBag.SortByID = String.IsNullOrEmpty(sortOrder) ? "ma_desc" : "";
-            ViewBag.SortByName = sortOrder == "Name" ? "name_desc" : "name";
+            ViewBag.SortByName = sortOrder == "Name" ? "name_desc" : "Name";
             ViewBag.SortByPrice = sortOrder == "Gia" ? "gia_desc" : "Gia";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.currentFilter = searchString;
+
+
             var books = db.Books.Include(b => b.Category).Include(b => b.Publisher);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(h => h.Tittle.Contains(searchString));
+            }
 
             switch (sortOrder)
             {

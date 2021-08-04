@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Nhom3_BookStore.Models.AdminAccount>
-
+﻿@model PagedList.IPagedList<Nhom3_BookStore.Models.AdminAccount>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -56,3 +57,8 @@
     }
 
 </table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }
+))

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Nhom3_BookStore.Models;
+using PagedList;
 
 namespace Nhom3_BookStore.Areas.Admin.Controllers
 {
@@ -15,10 +16,16 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Admin/Bills
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var bills = db.Bills.Include(b => b.ShoppingCart);
-            return View(bills.ToList());
+            bills = bills.OrderBy(b => b.BillNo);
+
+            int pageSize = 10;
+
+            int pageNumber = (page ?? 1);
+
+            return View(bills.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/Bills/Details/5
