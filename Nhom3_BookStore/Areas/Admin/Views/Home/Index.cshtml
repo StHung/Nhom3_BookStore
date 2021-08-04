@@ -8,20 +8,27 @@
 <div class="bg-info" style="width:100%; height:100px;">
     <h3 class="text-info" style="margin-left: 50px; vertical-align: middle; line-height: 100px;">
         <i class="fa fa-shopping-cart"></i>
-        Số sản phẩm đang bán: @ViewBag.ProductNumber
+        Số sản phẩm đã bán: @ViewBag.ProductNumber
     </h3>
 </div>
 
 <div class="bg-info" style="width:100%; height:100px;">
     <h3 class="text-info" style="margin-left: 50px; vertical-align: middle; line-height: 100px;">
         <i class="fa fa-universal-access"></i>
-        Lượt truy cập: @ViewBag.CustomerNumber
+        Lượng khánh hàng hiện tại: @ViewBag.CustomerNumber
     </h3>
 </div>
 
 <div class="bg-info" style="width:100%; height:100px;">
     <h3 class="text-info" style="margin-left: 50px; vertical-align: middle; line-height: 100px;">
         <i class="fa fa-balance-scale"> </i>
-        Tổng hóa đơn đã lập: @ViewBag.BillNumber
+        Tổng hóa đơn đã lập trong tháng @DateTime.Now.Month: @ViewBag.BillNumber
+    </h3>
+</div>
+
+<div class="bg-info" style="width:100%; height:100px;">
+    <h3 class="text-info" style="margin-left: 50px; vertical-align: middle; line-height: 100px;">
+        <i class="fa fa-money"> </i>
+        Tổng doanh thu trong tháng @DateTime.Now.Month: @ViewBag.Revenue
     </h3>
 </div>

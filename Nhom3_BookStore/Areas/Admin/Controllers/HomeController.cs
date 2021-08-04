@@ -12,14 +12,20 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            int productNumber = db.Books.ToList().Count;
+            int productNumber = db.Bills.Where(b => b.DeliveryState.Equals("Đã giao"))
+                                        .Sum(b => b.ShoppingCart.CartDetails.Count);
             int customerNumber = db.Customers.ToList().Count;
-            int billNumber = db.Bills.ToList().Count;
+            int billNumber = db.Bills.Where(b => b.PurchaseDate.Value.Month == DateTime.Now.Month).ToList().Count;
+
+            decimal revenue = db.Bills.Where(b => b.DeliveryState.Equals("Đã giao"))
+                                      .Sum(b => b.ShoppingCart.CartDetails
+                                      .ToList()
+                                      .Sum(cd => (decimal)cd.Book.Price * cd.Amount));
 
             ViewBag.ProductNumber = productNumber;
             ViewBag.CustomerNumber = customerNumber;
             ViewBag.BillNumber = billNumber;
-
+            ViewBag.Revenue = revenue.ToString("#,### VNĐ");
             return View();
         }
 
