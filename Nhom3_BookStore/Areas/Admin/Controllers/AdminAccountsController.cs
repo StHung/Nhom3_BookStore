@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Nhom3_BookStore.Models;
+using PagedList;
 
 namespace Nhom3_BookStore.Areas.Admin.Controllers
 {
@@ -15,9 +16,16 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Admin/AdminAccounts
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Admins.ToList());
+            var admins = db.Admins.Select(b => b);
+            admins = admins.OrderBy(b => b.FullName);
+
+            int pageSize = 10;
+
+            int pageNumber = (page ?? 1);
+
+            return View(admins.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/AdminAccounts/Details/5

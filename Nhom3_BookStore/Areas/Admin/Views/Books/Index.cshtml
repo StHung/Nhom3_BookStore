@@ -11,16 +11,31 @@
 <p>
     @Html.ActionLink("Thêm mới", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-sm-5">
+            <div class="col-sm-10">
+                @Html.TextBox("searchString", ViewBag.currentFilter as string,
+                               htmlAttributes: new { @class = "form-control", @placeholder = "Tìm tên sách..." })
+
+            </div>
+            <div class="col-sm-2">
+                <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
 <table class="table">
     <tr>
         <th>
             @Html.ActionLink("Mã sách", "Index",
-                          new { sortOrder = ViewBag.SortByID },
+                          new { sortOrder = ViewBag.SortByID, currentFilter = ViewBag.currentFilter },
                           htmlAttributes: new { style = "color: #676A6D;" })
         </th>
         <th>
             @Html.ActionLink("Tiêu đề sách", "Index",
-                      new { sortOrder = ViewBag.SortByName },
+                      new { sortOrder = ViewBag.SortByName, currentFilter = ViewBag.currentFilter },
                       htmlAttributes: new { style = "color: #676A6D;" })
         </th>
         <th>
