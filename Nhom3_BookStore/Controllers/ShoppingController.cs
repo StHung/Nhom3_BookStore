@@ -95,14 +95,14 @@ namespace Nhom3_BookStore.Controllers
 
             if (curCart == null || db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0)
             {
-                ViewBag.Message = "Giỏ hàng trống";
+                ViewBag.Message = "Giỏ hàng trống!";
             }
             else
             {
                 cartDetails = db.CartDetails.Where(c => c.CartID.Equals(curCart.CartID)).ToList();
                 if (cartDetails.Count == 0 || cartDetails == null)
                 {
-                    ViewBag.Message = "Giỏ hàng trống";
+                    ViewBag.Message = "Giỏ hàng trống!";
                 }
             }
             return View(cartDetails);

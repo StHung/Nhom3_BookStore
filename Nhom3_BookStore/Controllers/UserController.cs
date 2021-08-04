@@ -27,15 +27,24 @@ namespace Nhom3_BookStore.Controllers
                 var user = db.Customers.Where(u => u.Email.Equals(email) && u.Password.Equals(password)).ToList();
                 if (user.Count > 0)
                 {
-                    Session["CustomerID"] = user.FirstOrDefault().CustomerID;
-                    Session["CustomerName"] = user.FirstOrDefault().CustomerName;
-                    Session["Email"] = user.FirstOrDefault().Email;
-                    Session["Password"] = user.FirstOrDefault().Password;
-
-                    return RedirectToAction("Index", "Home");
+                    if (user.FirstOrDefault().Lock == true)
+                    {
+                        ViewBag.Error = "Tài khoản của bạn đã bị khóa!";
+                    }
+                    else
+                    {
+                        Session["CustomerID"] = user.FirstOrDefault().CustomerID;
+                        Session["CustomerName"] = user.FirstOrDefault().CustomerName;
+                        Session["Email"] = user.FirstOrDefault().Email;
+                        Session["Password"] = user.FirstOrDefault().Password;
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ViewBag.Error = "Tài khoản hoặc mật khẩu không chính xác!";
                 }
             }
-            ViewBag.Error = "Tài khoản hoặc mật khẩu không chính xác!";
             return View();
         }
 
