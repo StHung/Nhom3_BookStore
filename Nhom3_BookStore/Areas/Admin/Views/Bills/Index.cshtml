@@ -7,7 +7,15 @@
 }
 
 <h2>Danh sách Hóa Đơn</h2>
-
+<br />
+<div>
+    <h4>
+        <b>Lọc theo trạng thái:</b> @Html.DropDownList("filter",
+                          new SelectList(new string[] { "Tất cả", "Đã giao", "Đang giao" })
+                       )
+    </h4>
+</div>
+<br />
 <table class="table">
     <tr>
         <th>

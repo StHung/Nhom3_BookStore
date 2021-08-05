@@ -64,7 +64,7 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Error = "Lỗi nhập dữ liệu! " + ex.Message;
+                ViewBag.Error = "Mã danh mục này đã tồn tại!";
                 return View(category);
             }
         }

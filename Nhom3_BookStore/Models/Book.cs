@@ -42,9 +42,11 @@
         public string Author { get; set; }
 
         [DisplayName("Năm phát hành")]
+        [Range(0, int.MaxValue, ErrorMessage = "Năm phát hành không hợp lệ!")]
         public int? ReleaseYear { get; set; }
 
         [DisplayName("Số trang")]
+        [Range(0, int.MaxValue, ErrorMessage = "Số trang không hợp lệ!")]
         public int? NumberOfPages { get; set; }
 
         [Required(ErrorMessage = "Giá bán không được để trống!")]
@@ -65,6 +67,7 @@
         public string Images { get; set; }
 
         [DisplayName("Lượng có")]
+        [Range(1, int.MaxValue, ErrorMessage = "Số lượng tối thiểu phải là một!")]
         public int? Quantity { get; set; }
 
         public virtual Category Category { get; set; }
