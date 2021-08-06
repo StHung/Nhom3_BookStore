@@ -16,12 +16,12 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
         private BookStoreDBContext db = new BookStoreDBContext();
 
         // GET: Admin/Bills
-        public ActionResult Index(int? page, string filter)
+        public ActionResult Index(int? page, string billstate)
         {
             var bills = db.Bills.Include(b => b.ShoppingCart);
             bills = bills.OrderBy(b => b.BillNo);
 
-            switch (filter)
+            switch (billstate)
             {
                 case "Tất cả":
                     break;

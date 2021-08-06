@@ -8,13 +8,24 @@
 
 <h2>Danh sách Hóa Đơn</h2>
 <br />
-<div>
-    <h4>
-        <b>Lọc theo trạng thái:</b> @Html.DropDownList("filter",
-                          new SelectList(new string[] { "Tất cả", "Đã giao", "Đang giao" })
-                       )
-    </h4>
-</div>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    @Html.DropDownList("billstate",
+                                        new SelectList(new string[] { "Tất cả", "Đã giao", "Đang giao" }),
+                                        new { @class = "form-control",}
+                                        )
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <input type="submit" value="Lọc" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
 <br />
 <table class="table">
     <tr>
