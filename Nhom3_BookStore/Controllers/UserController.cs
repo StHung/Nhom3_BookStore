@@ -33,10 +33,30 @@ namespace Nhom3_BookStore.Controllers
                     }
                     else
                     {
-                        Session["CustomerID"] = user.FirstOrDefault().CustomerID;
+                        string customerid = user.FirstOrDefault().CustomerID.ToString().Trim();
+
+                        Session["CustomerID"] = customerid;
                         Session["CustomerName"] = user.FirstOrDefault().CustomerName;
                         Session["Email"] = user.FirstOrDefault().Email;
                         Session["Password"] = user.FirstOrDefault().Password;
+
+                        var Carts = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList();
+
+                        ShoppingCart curCart = null;
+
+                        foreach (var item in Carts)
+                        {
+                            if (db.Bills.Where(b => b.CartID.Equals(item.CartID)).ToList().Count == 0)
+                            {
+                                curCart = item;
+                            }
+                        }
+
+                        if(curCart != null)
+                        {
+                            Session["cartid"] = curCart.CartID;
+                        }
+
                         return RedirectToAction("Index", "Home");
                     }
                 }

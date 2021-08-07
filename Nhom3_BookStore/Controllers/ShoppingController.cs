@@ -20,10 +20,19 @@ namespace Nhom3_BookStore.Controllers
                 return RedirectToAction("Login", "User");
             }
             string customerid = Session["CustomerID"].ToString();
-            var curCart = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList()
-                                            .LastOrDefault();
+            var Carts = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList();
 
-            if (curCart == null || db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0)
+            ShoppingCart curCart = null;
+            
+            foreach (var item in Carts)
+            {
+                if(db.Bills.Where(b => b.CartID.Equals(item.CartID)).ToList().Count == 0)
+                {
+                    curCart = item;
+                }
+            }
+
+            if (curCart == null /*|| db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0*/)
             {
                 //make random cart id
                 bool isValid = false;
@@ -46,7 +55,10 @@ namespace Nhom3_BookStore.Controllers
             }
             else if(curCart.CartID != null)
             {
-                Session["cartid"] = curCart.CartID;
+                if (Session["cartid"] == null)
+                {
+                    Session["cartid"] = curCart.CartID;
+                }
             }
 
             string cartid = Session["cartid"].ToString();
@@ -90,10 +102,21 @@ namespace Nhom3_BookStore.Controllers
                 return RedirectToAction("Login", "User");
             }
             string customerid = Session["CustomerID"].ToString();
-            var curCart = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList()
-                                            .LastOrDefault();
 
-            if (curCart == null || db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0)
+            var Carts = db.ShoppingCarts.Where(c => c.CustomerID.Equals(customerid)).ToList();
+
+            ShoppingCart curCart = null;
+
+            foreach (var item in Carts)
+            {
+                if (db.Bills.Where(b => b.CartID.Equals(item.CartID)).ToList().Count == 0)
+                {
+                    curCart = item;
+                }
+            }
+
+
+            if (curCart == null /*|| db.Bills.Where(b => b.CartID.Equals(curCart.CartID)).ToList().Count > 0*/)
             {
                 ViewBag.Message = "Giỏ hàng trống!";
             }
@@ -139,9 +162,11 @@ namespace Nhom3_BookStore.Controllers
                     bill.DeliveryAddress = address;
                 }
 
-                bill.CartID = db.ShoppingCarts.Where( s => s.CustomerID.Equals(customerid))
-                                              .ToList().LastOrDefault().CartID;
+                if(Session["cartid"] != null)
+                {
+                    bill.CartID = Session["cartid"].ToString();
 
+                }
 
                 bill.PurchaseDate = DateTime.Now;
                 bill.DeliveryState = "Đang giao";
