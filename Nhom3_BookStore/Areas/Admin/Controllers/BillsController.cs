@@ -33,7 +33,7 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
                     break;
             }
 
-            int pageSize = 5;
+            int pageSize = 10;
 
             int pageNumber = (page ?? 1);
 
