@@ -33,6 +33,8 @@ namespace Nhom3_BookStore.Areas.Admin.Controllers
                     break;
             }
 
+            ViewBag.BillState = billstate;
+
             int pageSize = 10;
 
             int pageNumber = (page ?? 1);
