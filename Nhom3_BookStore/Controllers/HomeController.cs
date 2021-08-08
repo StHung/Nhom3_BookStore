@@ -19,6 +19,7 @@ namespace Nhom3_BookStore.Controllers
 
             if (id != null)
             {
+                ViewBag.CategoryName = db.Categories.Find(id).CategoryName;
                 books = db.Books.Where(b => b.CategoryID.Equals(id)).ToList();
             }
             else if (!String.IsNullOrEmpty(searchString))

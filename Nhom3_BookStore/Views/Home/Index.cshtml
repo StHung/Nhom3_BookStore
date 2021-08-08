@@ -76,12 +76,27 @@
             <div class="col-sm-3">
                 @{
                     Html.RenderAction("_Sidebar", "Home");
+
+
                 }
             </div>
             <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <!--features_items-->
-                    <h2 class="title text-center">Các mặt hàng</h2>
+
+                    @if (ViewBag.CategoryName != null)
+                    {
+                        <h2 class="title text-center">
+                            @ViewBag.CategoryName
+                        </h2>
+                    }
+                    else
+                    {
+                        <h2 class="title text-center">
+                            Các mặt hàng
+                        </h2>
+                    }
+
                     @foreach (var item in Model)
                     {
                         <div class="col-sm-3" style="height:450px;">
@@ -90,7 +105,7 @@
                                     <div class="productinfo text-center">
                                         @{
                                             string ImagePath = "~/Areas/Admin/assets/productimages/" + item.Images;
-                                           
+
                                         }
                                         <a href="@Url.Action("Details", "Home", new { id = item.BookID.Trim() })">
                                             <img src="@Url.Content(ImagePath)" height="250" alt="bìa sách" />
