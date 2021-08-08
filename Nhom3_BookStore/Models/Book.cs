@@ -66,8 +66,9 @@
         [DisplayName("Ảnh")]
         public string Images { get; set; }
 
+        [Required(ErrorMessage = "Lượng có không được để trống!")]
         [DisplayName("Lượng có")]
-        [Range(1, int.MaxValue, ErrorMessage = "Số lượng tối thiểu phải là một!")]
+        [Range(0, int.MaxValue, ErrorMessage = "Số lượng nhập không hợp lệ!")]
         public int? Quantity { get; set; }
 
         public virtual Category Category { get; set; }

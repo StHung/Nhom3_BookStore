@@ -48,10 +48,13 @@
                         <h3>
                             <b>Giá: @Html.DisplayFor(model => model.Price) VNĐ</b>
                         </h3>
-                        <a href="@Url.Action("AddToCart", "Shopping", new { bookid = Model.BookID.Trim()})" class="btn btn-fefault cart" style="margin-left: 0px;">
-                            <i class="fa fa-shopping-cart"></i>
-                            Thêm vào giỏ
-                        </a>
+                        @if (Model.Quantity > 0)
+                        {
+                            <a href="@Url.Action("AddToCart", "Shopping", new { bookid = Model.BookID.Trim()})" class="btn btn-fefault cart" style="margin-left: 0px;">
+                                <i class="fa fa-shopping-cart"></i>
+                                Thêm vào giỏ
+                            </a>
+                        }
                     </div><!--/product-information-->
                 </div>
             </div><!--/product-details-->
